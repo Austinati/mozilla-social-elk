@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { mastodon } from 'masto'
+import { toggleBlockAccount, toggleMuteAccount, useRelationship } from '~~/composables/masto/relationship'
 
 const props = defineProps<{
   status: mastodon.v1.Status
@@ -259,6 +260,36 @@ function showFavoritedAndBoostedBy() {
               icon="i-ri:at-line"
               :command="command"
               @click="mentionUser(status.account)"
+            />
+
+            <CommonDropdownItem
+              v-if="!useRelationship(status.account).value?.muting"
+              :text="$t('menu.mute_account', [`@${status.account.acct}`])"
+              icon="i-ri:volume-mute-line"
+              :command="command"
+              @click="toggleMuteAccount(useRelationship(status.account).value!, status.account)"
+            />
+            <CommonDropdownItem
+              v-else
+              :text="$t('menu.unmute_account', [`@${status.account.acct}`])"
+              icon="i-ri:volume-up-fill"
+              :command="command"
+              @click="toggleMuteAccount(useRelationship(status.account).value!, status.account)"
+            />
+
+            <CommonDropdownItem
+              v-if="!useRelationship(status.account).value?.blocking"
+              :text="$t('menu.block_account', [`@${status.account.acct}`])"
+              icon="i-ri:forbid-2-line"
+              :command="command"
+              @click="toggleBlockAccount(useRelationship(status.account).value!, status.account)"
+            />
+            <CommonDropdownItem
+              v-else
+              :text="$t('menu.unblock_account', [`@${status.account.acct}`])"
+              icon="i-ri:checkbox-circle-line"
+              :command="command"
+              @click="toggleBlockAccount(useRelationship(status.account).value!, status.account)"
             />
           </template>
         </template>
