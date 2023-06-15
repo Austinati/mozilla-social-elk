@@ -48,6 +48,14 @@ async function copyLink(status: mastodon.v1.Status) {
     await clipboard.copy(url)
 }
 
+/*
+async function copyOriginalLink(status: mastodon.v1.Status) {
+  const url = status.url
+  if (url)
+    await clipboard.copy(url)
+}
+*/
+
 const { share, isSupported: isShareSupported } = useShare()
 async function shareLink(status: mastodon.v1.Status) {
   const url = getPermalinkUrl(status)
@@ -184,6 +192,13 @@ function showFavoritedAndBoostedBy() {
           @click="copyLink(status)"
         />
 
+        <!-- <CommonDropdownItem
+          :text="$t('menu.copy_original_link_to_post')"
+          icon="i-ri:links-fill"
+          :command="command"
+          @click="copyOriginalLink(status)"
+        /> -->
+
         <CommonDropdownItem
           v-if="isShareSupported"
           :text="$t('menu.share_post')"
@@ -200,6 +215,14 @@ function showFavoritedAndBoostedBy() {
           :disabled="isLoading.muted"
           @click="toggleMute()"
         />
+
+        <!-- <NuxtLink v-if="status.url" :to="status.url" external target="_blank">
+          <CommonDropdownItem
+            :text="$t('menu.open_in_original_site')"
+            icon="i-ri:arrow-right-up-line"
+            :command="command"
+          />
+        </NuxtLink> -->
 
         <template v-if="isHydrated && currentUser">
           <template v-if="isAuthor">
