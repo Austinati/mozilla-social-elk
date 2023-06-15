@@ -48,12 +48,6 @@ async function copyLink(status: mastodon.v1.Status) {
     await clipboard.copy(url)
 }
 
-async function copyOriginalLink(status: mastodon.v1.Status) {
-  const url = status.url
-  if (url)
-    await clipboard.copy(url)
-}
-
 const { share, isSupported: isShareSupported } = useShare()
 async function shareLink(status: mastodon.v1.Status) {
   const url = getPermalinkUrl(status)
@@ -191,13 +185,6 @@ function showFavoritedAndBoostedBy() {
         />
 
         <CommonDropdownItem
-          :text="$t('menu.copy_original_link_to_post')"
-          icon="i-ri:links-fill"
-          :command="command"
-          @click="copyOriginalLink(status)"
-        />
-
-        <CommonDropdownItem
           v-if="isShareSupported"
           :text="$t('menu.share_post')"
           icon="i-ri:share-line"
@@ -213,14 +200,6 @@ function showFavoritedAndBoostedBy() {
           :disabled="isLoading.muted"
           @click="toggleMute()"
         />
-
-        <NuxtLink v-if="status.url" :to="status.url" external target="_blank">
-          <CommonDropdownItem
-            :text="$t('menu.open_in_original_site')"
-            icon="i-ri:arrow-right-up-line"
-            :command="command"
-          />
-        </NuxtLink>
 
         <template v-if="isHydrated && currentUser">
           <template v-if="isAuthor">
@@ -290,6 +269,13 @@ function showFavoritedAndBoostedBy() {
               icon="i-ri:checkbox-circle-line"
               :command="command"
               @click="toggleBlockAccount(useRelationship(status.account).value!, status.account)"
+            />
+
+            <CommonDropdownItem
+              :text="$t('menu.report_account', [`@${status.account.acct}`])"
+              icon="i-ri:flag-2-line"
+              :command="command"
+              @click="openReportDialog(status.account, status)"
             />
           </template>
         </template>
