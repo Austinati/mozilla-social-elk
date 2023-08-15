@@ -1,5 +1,21 @@
 [
   [
+    "#5f22cb",
+    {
+      "--theme-color-name": "#5f22cb",
+      "--c-primary": "rgb(var(--rgb-primary))",
+      "--c-primary-active": "#4200b2",
+      "--c-primary-light": "#5f22cb80",
+      "--c-primary-fade": "#591cc61a",
+      "--rgb-primary": "95, 34, 203",
+      "--c-dark-primary": "rgb(var(--rgb-dark-primary))",
+      "--c-dark-primary-active": "#a886e5",
+      "--c-dark-primary-light": "#c19eff80",
+      "--c-dark-primary-fade": "#bc99fa1a",
+      "--rgb-dark-primary": "193, 158, 255"
+    }
+  ],
+  [
     "#cc7d24",
     {
       "--theme-color-name": "#cc7d24",
@@ -12,7 +28,7 @@
       "--c-dark-primary-active": "#b66b0d",
       "--c-dark-primary-light": "#d1822980",
       "--c-dark-primary-fade": "#cc7d241a",
-      "--rgb-dark-primary": "204, 125, 36"
+      "--rgb-dark-primary": "209, 130, 41"
     }
   ],
   [
@@ -28,7 +44,7 @@
       "--c-dark-primary-active": "#798300",
       "--c-dark-primary-light": "#929b1b80",
       "--c-dark-primary-fade": "#8d96141a",
-      "--rgb-dark-primary": "141, 150, 20"
+      "--rgb-dark-primary": "146, 155, 27"
     }
   ],
   [
@@ -44,7 +60,7 @@
       "--c-dark-primary-active": "#00903f",
       "--c-dark-primary-light": "#2ba95580",
       "--c-dark-primary-fade": "#24a4511a",
-      "--rgb-dark-primary": "36, 164, 81"
+      "--rgb-dark-primary": "43, 169, 85"
     }
   ],
   [
@@ -60,7 +76,7 @@
       "--c-dark-primary-active": "#009688",
       "--c-dark-primary-light": "#13aea080",
       "--c-dark-primary-fade": "#00a99b1a",
-      "--rgb-dark-primary": "0, 169, 155"
+      "--rgb-dark-primary": "19, 174, 160"
     }
   ],
   [
@@ -76,7 +92,7 @@
       "--c-dark-primary-active": "#0093cb",
       "--c-dark-primary-light": "#17abe480",
       "--c-dark-primary-fade": "#00a6df1a",
-      "--rgb-dark-primary": "0, 166, 223"
+      "--rgb-dark-primary": "23, 171, 228"
     }
   ],
   [
@@ -92,7 +108,7 @@
       "--c-dark-primary-active": "#0085e5",
       "--c-dark-primary-light": "#1a9cff80",
       "--c-dark-primary-fade": "#0197fa1a",
-      "--rgb-dark-primary": "0, 151, 253"
+      "--rgb-dark-primary": "26, 156, 255"
     }
   ],
   [
@@ -108,7 +124,7 @@
       "--c-dark-primary-active": "#8e69d2",
       "--c-dark-primary-light": "#a780ec80",
       "--c-dark-primary-fade": "#a27be71a",
-      "--rgb-dark-primary": "162, 123, 231"
+      "--rgb-dark-primary": "167, 128, 236"
     }
   ],
   [
@@ -124,7 +140,7 @@
       "--c-dark-primary-active": "#d14896",
       "--c-dark-primary-light": "#eb62ae80",
       "--c-dark-primary-fade": "#e65da91a",
-      "--rgb-dark-primary": "230, 93, 169"
+      "--rgb-dark-primary": "235, 98, 174"
     }
   ],
   [
@@ -140,7 +156,7 @@
       "--c-dark-primary-active": "#d94c50",
       "--c-dark-primary-light": "#f5656580",
       "--c-dark-primary-fade": "#ef60611a",
-      "--rgb-dark-primary": "239, 96, 97"
+      "--rgb-dark-primary": "245, 101, 101"
     }
   ]
 ]

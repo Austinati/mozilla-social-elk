@@ -34,10 +34,10 @@
 }
 
 .dark {
-  --c-primary: var(--c-dark-primary);
-  --c-primary-active: var(--c-dark-primary-active);
-  --c-primary-light: var(--c-dark-primary-light);
-  --c-primary-fade: var(--c-dark-primary-fade);
+  --c-primary: var(--c-dark-primary) !important;
+  --c-primary-active: var(--c-dark-primary-active) !important;
+  --c-primary-light: var(--c-dark-primary-light) !important;
+  --c-primary-fade: var(--c-dark-primary-fade) !important;
   --c-danger: #FF2810;
   --c-danger-active: #E02F00;
 
