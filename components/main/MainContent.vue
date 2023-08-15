@@ -6,7 +6,7 @@ defineProps<{
   back?: boolean
   /** Do not applying overflow hidden to let use floatable components in title */
   noOverflowHidden?: boolean
-  /** Do not show the BetaLabel */
+  /** Do not show the beta label */
   noBetaLabel?: boolean
 }>()
 
@@ -44,7 +44,7 @@ const containerClass = computed(() => {
           </NuxtLink>
           <div :truncate="!noOverflowHidden ? '' : false" flex w-full data-tauri-drag-region class="native-mac:justify-center native-mac:text-center native-mac:sm:justify-start">
             <slot name="title" />
-            <div v-if="!noBetaLabel" ml-12px class="beta">
+            <div v-if="!noBetaLabel" ml-12px class="beta-label">
               Beta
             </div>
           </div>
@@ -70,7 +70,7 @@ const containerClass = computed(() => {
 </template>
 
 <style>
-  .beta {
+  .beta-label {
     width: 56.16px;
     height: 35.16px;
     padding: 5px 6px;
