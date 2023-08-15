@@ -76,7 +76,6 @@ const containerClass = computed(() => {
     padding: 5px 6px;
     border-radius: 8px;
     border: 2px solid var(--c-primary);
-    gap: 17.70120620727539px;
 
     color: var(--c-primary);
     font-size: 18px;

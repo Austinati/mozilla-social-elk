@@ -57,9 +57,6 @@ function toggleDark() {
 
     color: var(--c-text-base-light);
     font-size: 13.13px;
-    /* font-weight: 700; */
-    font-weight: 510;
-    a {
-    }
+    font-weight: 500;
   }
 </style>
