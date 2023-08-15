@@ -55,7 +55,7 @@ function toggleDark() {
     gap: 8px;
     line-height: 17.8px;
 
-    color: var(--c-text-base-inverted);
+    color: var(--c-text-base-light);
     font-size: 13.13px;
     /* font-weight: 700; */
     font-weight: 510;
