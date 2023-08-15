@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import BetaLabel from '~/components/beta-label/beta-label.vue'
+
 defineProps<{
   /** Show the back button on small screens */
   backOnSmallScreen?: boolean
@@ -6,6 +8,8 @@ defineProps<{
   back?: boolean
   /** Do not applying overflow hidden to let use floatable components in title */
   noOverflowHidden?: boolean
+  /** Do not show the BetaLabel */
+  noBetaLabel?: boolean
 }>()
 
 const container = ref()
@@ -42,6 +46,7 @@ const containerClass = computed(() => {
           </NuxtLink>
           <div :truncate="!noOverflowHidden ? '' : false" flex w-full data-tauri-drag-region class="native-mac:justify-center native-mac:text-center native-mac:sm:justify-start">
             <slot name="title" />
+            <BetaLabel v-if="!noBetaLabel" />
           </div>
           <div sm:hidden h-7 w-1px />
         </div>
