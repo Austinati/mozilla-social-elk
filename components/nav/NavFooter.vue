@@ -47,16 +47,10 @@ function toggleDark() {
 <style>
   .beta-label {
     width: 212px;
-    height: 70px;
     background-color: var(--c-primary);
-    border: 2px solid var(--c-primary);
+    padding: 10px;
     border-radius: 8px;
-    padding: 8px;
-    gap: 8px;
-    line-height: 17.8px;
-
     color: var(--c-text-base-light);
-    font-size: 13.13px;
     font-weight: 500;
   }
 </style>
