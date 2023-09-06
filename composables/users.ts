@@ -315,6 +315,13 @@ export async function signOut() {
   // Set currentUserId to next user if available
   currentUserHandle.value = users.value[0]?.account?.acct
 
+  // Sign out of Mastodon from Elk
+  const signOutUrl = '/auth/sign_out'
+  const fetchOptions = {
+    method: 'DELETE', // This requires https://github.com/MozillaSocial/mastodon/pull/38 on the Mastodon instance
+  }
+  const response = await fetch(signOutUrl, fetchOptions).then(r => r.json())
+  
   if (!currentUserHandle.value)
     await useRouter().push('/')
 
