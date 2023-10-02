@@ -321,7 +321,7 @@ export async function signOut() {
     method: 'DELETE', // This requires https://github.com/MozillaSocial/mastodon/pull/38 on the Mastodon instance
   }
   await fetch(signOutUrl, fetchOptions).then(r => r.json())
-  
+
   if (!currentUserHandle.value)
     await useRouter().push('/')
 

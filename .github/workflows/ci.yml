@@ -4,7 +4,7 @@ permissions: {}
 
 on:
   push:
-    branches: ["main"]
+    branches: [main]
   pull_request:
     types: [opened, synchronize]
 
@@ -34,7 +34,7 @@ jobs:
 
       - name: 💪 Type check
         run: pnpm test:typecheck
-  
+
   docker-build:
     name: Build Docker Image
     timeout-minutes: 15
