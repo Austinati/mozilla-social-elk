@@ -1,0 +1,24 @@
+---
+# Schema
+$schema: moz://mozilla.org/schemas/glean/metrics/2-0-0
+
+page:
+  load:
+    type: event
+    lifetime: ping
+    description: |
+      The URL path of the page that was viewed.
+    data_sensitivity:
+      - web_activity
+    bugs:
+      - TODO
+    data_reviews:
+      - TODO
+    notification_emails:
+      - TODO
+    expires: never
+    extra_keys:
+      path:
+        description: |
+          The URL path of the page that was viewed.
+        type: string
