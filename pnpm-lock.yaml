@@ -28,6 +28,9 @@ importers:
       '@iconify/utils':
         specifier: ^2.1.7
         version: 2.1.7
+      '@mozilla/glean':
+        specifier: ^2.0.3
+        version: 2.0.3
       '@nuxt/devtools':
         specifier: ^0.6.6
         version: 0.6.6(nuxt@3.6.2)(rollup@2.79.1)(vite@4.3.9)
@@ -186,10 +189,10 @@ importers:
         version: 5.0.1
       tauri-plugin-log-api:
         specifier: github:tauri-apps/tauri-plugin-log
-        version: github.com/tauri-apps/tauri-plugin-log/9075595196d5a66f8f3265d2aaf7e2ffeb4cb2ab
+        version: github.com/tauri-apps/tauri-plugin-log/f7142fcf10841cdabab2fbe8650e9adc3f0bb212
       tauri-plugin-store-api:
         specifier: github:tauri-apps/tauri-plugin-store
-        version: github.com/tauri-apps/tauri-plugin-store/a65ce9bfb168a9a3cd7ed4102b9f22770cc3abfa
+        version: github.com/tauri-apps/tauri-plugin-store/1a741b721ed1eae0de0d811ecfe86fc6ad54fb73
       theme-vitesse:
         specifier: ^0.7.2
         version: 0.7.2
@@ -2211,8 +2214,8 @@ packages:
       vue-i18n:
         optional: true
     dependencies:
-      '@intlify/message-compiler': 9.3.0-beta.25
-      '@intlify/shared': 9.3.0-beta.25
+      '@intlify/message-compiler': 9.4.1
+      '@intlify/shared': 9.4.1
       jsonc-eslint-parser: 1.4.1
       source-map: 0.6.1
       vue-i18n: 9.3.0-beta.16(vue@3.3.4)
@@ -2244,11 +2247,11 @@ packages:
       source-map: 0.6.1
     dev: false
 
-  /@intlify/message-compiler@9.3.0-beta.25:
-    resolution: {integrity: sha512-uT7ybqKoDEw1XITQYnTYjWgZnpCDmHv9e3D4MmJDqHl2qCm6anzdUXWKHUhqR87Ha9Z8Rl44v40iSI/4NUbppQ==}
+  /@intlify/message-compiler@9.4.1:
+    resolution: {integrity: sha512-aN2N+dUx320108QhH51Ycd2LEpZ+NKbzyQ2kjjhqMcxhHdxtOnkgdx+MDBhOy/CObwBmhC3Nygzc6hNlfKvPNw==}
     engines: {node: '>= 16'}
     dependencies:
-      '@intlify/shared': 9.3.0-beta.25
+      '@intlify/shared': 9.4.1
       source-map-js: 1.0.2
     dev: false
 
@@ -2257,8 +2260,8 @@ packages:
     engines: {node: '>= 14'}
     dev: false
 
-  /@intlify/shared@9.3.0-beta.25:
-    resolution: {integrity: sha512-Zg+ECV9RPdp227tCJOgvPb+S3i651nf4kKHsMojSyWCppVK/4NFuDrBG2lIQSQL6Iq5LKVr5MkezHCW2NBTQRg==}
+  /@intlify/shared@9.4.1:
+    resolution: {integrity: sha512-A51elBmZWf1FS80inf/32diO9DeXoqg9GR9aUDHFcfHoNDuT46Q+fpPOdj8jiJnSHSBh8E1E+6qWRhAZXdK3Ng==}
     engines: {node: '>= 16'}
     dev: false
 
@@ -2278,7 +2281,7 @@ packages:
         optional: true
     dependencies:
       '@intlify/bundle-utils': 4.0.0(vue-i18n@9.3.0-beta.16)
-      '@intlify/shared': 9.3.0-beta.25
+      '@intlify/shared': 9.4.1
       '@rollup/pluginutils': 4.2.1
       '@vue/compiler-sfc': 3.3.4
       debug: 4.3.4
@@ -2494,6 +2497,17 @@ packages:
       node-fetch: 2.6.12
     transitivePeerDependencies:
       - encoding
+    dev: false
+
+  /@mozilla/glean@2.0.3:
+    resolution: {integrity: sha512-xSPWvgjkmOYzaCf5HIXUHAwFGVLDaGCwvCcHqUqSdXROGap86lzPOIK9Nsd0vfBTNoWVFPlkWqOyhbRitazxkQ==}
+    engines: {node: '>=12.20.0', npm: '>=7.0.0'}
+    hasBin: true
+    dependencies:
+      fflate: 0.8.1
+      jose: 4.15.1
+      tslib: 2.6.0
+      uuid: 9.0.1
     dev: false
 
   /@netlify/functions@1.6.0:
@@ -3555,8 +3569,8 @@ packages:
       string.prototype.matchall: 4.0.8
     dev: false
 
-  /@tauri-apps/api@1.4.0:
-    resolution: {integrity: sha512-Jd6HPoTM1PZSFIzq7FB8VmMu3qSSyo/3lSwLpoapW+lQ41CL5Dow2KryLg+gyazA/58DRWI9vu/XpEeHK4uMdw==}
+  /@tauri-apps/api@1.5.0:
+    resolution: {integrity: sha512-yQY9wpVNuiYhLLuyDlu1nBpqJELT1fGp7OctN4rW9I2W1T2p7A3tqPxsEzQprEwneQRBAlPM9vC8NsnMbct+pg==}
     engines: {node: '>= 14.6.0', npm: '>= 6.6.0', yarn: '>= 1.19.1'}
     dev: false
 
@@ -7686,6 +7700,10 @@ packages:
     resolution: {integrity: sha512-5u2V/CDW15QM1XbbgS+0DfPxVB+jUKhWEKuuFuHncbk3tEEqzmoXL+2KyOFuKGqOnmdIy0/davWF1CkuwtibCw==}
     dev: false
 
+  /fflate@0.8.1:
+    resolution: {integrity: sha512-/exOvEuc+/iaUm105QIiOt4LpBdMTWsXxqR0HDF35vx3fmaKzw7354gTilCh5rkzEt8WYyG//ku3h3nRmd7CHQ==}
+    dev: false
+
   /file-entry-cache@6.0.1:
     resolution: {integrity: sha512-7Gps/XWymbLk2QLYK4NzpMOrYjMhdIxXuIvy2QBsLE6ljuodKvdkWs/cpyJJ3CVIVpH0Oi1Hvg1ovbMzLdFBBg==}
     engines: {node: ^10.12.0 || >=12.0.0}
@@ -8901,6 +8919,10 @@ packages:
       '@sideway/address': 4.1.4
       '@sideway/formula': 3.0.1
       '@sideway/pinpoint': 2.0.0
+    dev: false
+
+  /jose@4.15.1:
+    resolution: {integrity: sha512-CinpaEMmwb/59YG0N6SC3DY1imdTU5iNl08HPWR7NdyxACPeFuQbqjaocEjCDGq04KbnxSqQu702vL3ZTvKe5w==}
     dev: false
 
   /js-beautify@1.14.6:
@@ -13755,6 +13777,11 @@ packages:
       is-typed-array: 1.1.10
       which-typed-array: 1.1.9
 
+  /uuid@9.0.1:
+    resolution: {integrity: sha512-b+1eJOlsR9K8HJpow9Ok3fiWOWSIcIzXodvv0rQjVoOVNpWMpxf1wZNpt4y9h10odCNrqnYp1OBzRktckBe3sA==}
+    hasBin: true
+    dev: false
+
   /uvu@0.5.6:
     resolution: {integrity: sha512-+g8ENReyr8YsOc6fv/NVJs2vFdHBnBNdfE49rshrTzDWOlUx4Gq7KOS2GD8eqhy2j+Ejq29+SbKH8yjkAqXqoA==}
     engines: {node: '>=8'}
@@ -14212,7 +14239,7 @@ packages:
       vue-router:
         optional: true
     dependencies:
-      '@intlify/shared': 9.3.0-beta.25
+      '@intlify/shared': 9.4.1
       '@intlify/vue-i18n-bridge': 0.8.0(vue-i18n@9.3.0-beta.16)
       '@intlify/vue-router-bridge': 0.8.0(vue-router@4.2.4)(vue@3.3.4)
       ufo: 1.1.2
@@ -14790,18 +14817,18 @@ packages:
     resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}
     dev: true
 
-  github.com/tauri-apps/tauri-plugin-log/9075595196d5a66f8f3265d2aaf7e2ffeb4cb2ab:
-    resolution: {tarball: https://codeload.github.com/tauri-apps/tauri-plugin-log/tar.gz/9075595196d5a66f8f3265d2aaf7e2ffeb4cb2ab}
+  github.com/tauri-apps/tauri-plugin-log/f7142fcf10841cdabab2fbe8650e9adc3f0bb212:
+    resolution: {tarball: https://codeload.github.com/tauri-apps/tauri-plugin-log/tar.gz/f7142fcf10841cdabab2fbe8650e9adc3f0bb212}
     name: tauri-plugin-log-api
     version: 0.0.0
     dependencies:
-      '@tauri-apps/api': 1.4.0
+      '@tauri-apps/api': 1.5.0
     dev: false
 
-  github.com/tauri-apps/tauri-plugin-store/a65ce9bfb168a9a3cd7ed4102b9f22770cc3abfa:
-    resolution: {tarball: https://codeload.github.com/tauri-apps/tauri-plugin-store/tar.gz/a65ce9bfb168a9a3cd7ed4102b9f22770cc3abfa}
+  github.com/tauri-apps/tauri-plugin-store/1a741b721ed1eae0de0d811ecfe86fc6ad54fb73:
+    resolution: {tarball: https://codeload.github.com/tauri-apps/tauri-plugin-store/tar.gz/1a741b721ed1eae0de0d811ecfe86fc6ad54fb73}
     name: tauri-plugin-store-api
     version: 0.0.0
     dependencies:
-      '@tauri-apps/api': 1.4.0
+      '@tauri-apps/api': 1.5.0
     dev: false

@@ -27,7 +27,10 @@
     "prepare-translation-status": "tsx scripts/prepare-translation-status.ts",
     "generate-pwa-icons": "tsx scripts/generate-pwa-icons.ts",
     "postinstall": "ignore-dependency-scripts \"stale-dep -u && simple-git-hooks && nuxi prepare && nr prepare-translation-status\"",
-    "release": "stale-dep && bumpp && tsx scripts/release.ts"
+    "release": "stale-dep && bumpp && tsx scripts/release.ts",
+    "build:glean": "glean translate telemetry/metrics.yaml -f typescript -o telemetry/generated",
+    "docs:glean": "glean translate telemetry/metrics.yaml -f markdown -o telemetry/generated/docs",
+    "lint:glean": "glean glinter telemetry/metrics.yaml"
   },
   "dependencies": {
     "@emoji-mart/data": "^1.1.2",
@@ -35,6 +38,7 @@
     "@iconify-emoji/twemoji": "^1.0.2",
     "@iconify/json": "^2.2.85",
     "@iconify/utils": "^2.1.7",
+    "@mozilla/glean": "^2.0.3",
     "@nuxt/devtools": "^0.6.6",
     "@nuxtjs/color-mode": "^3.3.0",
     "@nuxtjs/i18n": "8.0.0-beta.10",
