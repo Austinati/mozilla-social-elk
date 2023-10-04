@@ -8,8 +8,8 @@ export default defineNuxtPlugin((nuxtApp) => {
     log.info('Glean: App mounted, start initing glean')
 
     const GLEAN_APP_ID = 'mozilla-social-web'
-    const devMode = useAppConfig().env === 'dev'
-    const uploadEnabled = true // this will eventually be a setting that the user can toggle
+    const devMode = useAppConfig().env === ('dev' || 'canary' || 'preview')
+    const uploadEnabled = devMode // this will eventually be a setting that the user can toggle
 
     Glean.initialize(GLEAN_APP_ID, uploadEnabled, { })
 
@@ -21,7 +21,6 @@ export default defineNuxtPlugin((nuxtApp) => {
   })
 
   nuxtApp.hook('page:finish', () => {
-    log.info('Glean: Page finished, sending page event')
     const route = useRoute()
 
     load.record({ path: route.path })
