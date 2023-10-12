@@ -2,16 +2,22 @@
 const invites: string[] = await $fetch(`/api/${publicServer.value}/invites`)
 
 const { text, copy, copied } = useClipboard()
+
+const { t } = useI18n()
+
+const noInvites = invites.length === 0
+const heading = noInvites ? t('invites.no_codes.title') : t('invites.title')
+const description = noInvites ? t('invites.no_codes.subtitle') : t('invites.subtitle')
 </script>
 
 <template>
   <div p-x-5 sm:p-0>
     <div m-b-5>
       <h1 text-2xl p-y-2>
-        {{ $t('invites.title') }}
+        {{ heading }}
       </h1>
       <p>
-        {{ $t('invites.subtitle') }}
+        {{ description }}
       </p>
     </div>
     <main>
@@ -25,9 +31,6 @@ const { text, copy, copied } = useClipboard()
             </button>
           </div>
         </div>
-      </div>
-      <div v-if="invites.length === 0" b-t-1px p-y-4 text-center>
-        {{ $t('invites.no_codes') }}
       </div>
     </main>
   </div>
