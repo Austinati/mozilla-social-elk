@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const invites: string[] = ['asbs', 'asdasd']// await $fetch(`/api/${publicServer.value}/invites`)
+const invites: string[] = await $fetch(`/api/${publicServer.value}/invites`)
 </script>
 
 <template>

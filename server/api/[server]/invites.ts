@@ -2,12 +2,12 @@ export default defineEventHandler(async (event) => {
   try {
     const { server } = getRouterParams(event)
 
+    const token = getCookie(event, 'accessToken')
     const invites = await fetch(
-        `https://${server}/api/invitation/v1/status`,
+      `https://${server}/api/invitation/v1/status`,
+      { headers: { authorization: `Bearer ${token}` } },
     )
       .then(response => response.json())
-      .then(response => response.data)
-
     return invites
   }
   catch (err) {
