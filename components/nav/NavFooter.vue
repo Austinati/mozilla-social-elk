@@ -1,4 +1,6 @@
 <script setup lang="ts">
+const { t } = useI18n()
+
 const userSettings = useUserSettings()
 const colorMode = useColorMode()
 
@@ -9,6 +11,14 @@ function toggleDark() {
 
 <template>
   <footer p4 text-sm text-secondary-light flex="~ col">
+    <div bg-primary text-base-light font-500 p-10px mb-15px w-212px b-rd-8px>
+      <i18n-t keypath="footer.beta.description">
+        <b>{{ $t('footer.beta.desc_1') }}</b>
+        <NuxtLink href="https://survey.alchemer.com/s3/7470063/mozilla-social-feedback-form" target="_blank" external>
+          <u>{{ $t('footer.beta.link') }}</u>
+        </NuxtLink>
+      </i18n-t>
+    </div>
     <div flex="~ gap2" items-center mb4>
       <CommonTooltip :content="$t('nav.toggle_theme')">
         <button flex i-ri:sun-line dark-i-ri:moon-line text-lg :aria-label="$t('nav.toggle_theme')" @click="toggleDark()" />

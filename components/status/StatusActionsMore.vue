@@ -32,31 +32,34 @@ const userSettings = useUserSettings()
 const useStarFavoriteIcon = usePreferences('useStarFavoriteIcon')
 
 const isAuthor = $computed(() => status.account.id === currentUser.value?.account.id)
+const notLocal = $computed(() => getServerName(status.account) !== currentServer.value)
+const statusRoute = $computed(() => getStatusRoute(status))
 
 const { client } = $(useMasto())
 
-function getPermalinkUrl(status: mastodon.v1.Status) {
-  const url = getStatusPermalinkRoute(status)
+function getPermalinkUrl() {
+  const url = statusRoute.href
+
   if (url)
-    return `${location.origin}/${url}`
+    return `${location.origin}${url}`
   return null
 }
 
-async function copyLink(status: mastodon.v1.Status) {
-  const url = getPermalinkUrl(status)
+async function copyLink() {
+  const url = getPermalinkUrl()
   if (url)
     await clipboard.copy(url)
 }
 
-async function copyOriginalLink(status: mastodon.v1.Status) {
+async function copyOriginalLink() {
   const url = status.url
   if (url)
     await clipboard.copy(url)
 }
 
 const { share, isSupported: isShareSupported } = useShare()
-async function shareLink(status: mastodon.v1.Status) {
-  const url = getPermalinkUrl(status)
+async function shareLink() {
+  const url = getPermalinkUrl()
   if (url)
     await share({ url })
 }
@@ -187,14 +190,15 @@ function showFavoritedAndBoostedBy() {
           :text="$t('menu.copy_link_to_post')"
           icon="i-ri:link"
           :command="command"
-          @click="copyLink(status)"
+          @click="copyLink()"
         />
 
         <CommonDropdownItem
+          v-if="notLocal"
           :text="$t('menu.copy_original_link_to_post')"
           icon="i-ri:links-fill"
           :command="command"
-          @click="copyOriginalLink(status)"
+          @click="copyOriginalLink()"
         />
 
         <CommonDropdownItem
@@ -202,7 +206,7 @@ function showFavoritedAndBoostedBy() {
           :text="$t('menu.share_post')"
           icon="i-ri:share-line"
           :command="command"
-          @click="shareLink(status)"
+          @click="shareLink()"
         />
 
         <CommonDropdownItem
@@ -214,7 +218,7 @@ function showFavoritedAndBoostedBy() {
           @click="toggleMute()"
         />
 
-        <NuxtLink v-if="status.url" :to="status.url" external target="_blank">
+        <NuxtLink v-if="status.url && notLocal" :to="status.url" external target="_blank">
           <CommonDropdownItem
             :text="$t('menu.open_in_original_site')"
             icon="i-ri:arrow-right-up-line"
@@ -292,7 +296,7 @@ function showFavoritedAndBoostedBy() {
               @click="toggleBlockAccount(useRelationship(status.account).value!, status.account)"
             />
 
-            <template v-if="getServerName(status.account) && getServerName(status.account) !== currentServer">
+            <template v-if="notLocal">
               <CommonDropdownItem
                 v-if="!useRelationship(status.account).value?.domainBlocking"
                 :text="$t('menu.block_domain', [getServerName(status.account)])"

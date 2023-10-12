@@ -12,7 +12,7 @@ export function useSignIn(input?: Ref<HTMLInputElement | undefined>) {
   const server = ref('')
   const displayError = ref(false)
 
-  async function oauth() {
+  async function oauth(authIntent?: string) {
     if (busy.value)
       return
 
@@ -28,6 +28,9 @@ export function useSignIn(input?: Ref<HTMLInputElement | undefined>) {
     try {
       let href: string
       if (singleInstanceServer) {
+        if (authIntent)
+          localStorage.setItem('mozsoc.auth_intent', authIntent)
+
         href = await (globalThis.$fetch as any)(makeAbsolutePath(`/api/${publicServer.value}/login`), {
           method: 'POST',
           body: {

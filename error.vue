@@ -6,29 +6,20 @@ const { error } = defineProps<{
   error: Partial<NuxtError>
 }>()
 
+const { t } = useI18n()
 // add more custom status codes messages here
 const errorCodes: Record<number, string> = {
-  404: 'Page not found',
+  404: t('error.message-404'),
+  500: t('error.message-500'),
 }
 
 if (process.dev)
   console.error(error)
 
-const defaultMessage = 'Something went wrong'
-
-const message = error.message ?? errorCodes[error.statusCode!] ?? defaultMessage
-
-const state = ref<'error' | 'reloading'>('error')
-async function reload() {
-  state.value = 'reloading'
-  try {
-    clearError({ redirect: currentUser.value ? '/home' : `/${currentServer.value}/public/local` })
-  }
-  catch (err) {
-    console.error(err)
-    state.value = 'error'
-  }
-}
+const defaultMessage = t('error.message-default')
+const subtitle = t('error.message-subtitle')
+const message = errorCodes[error.statusCode!] ?? error.message ?? defaultMessage
+const showBack = error.statusCode === 404
 </script>
 
 <template>
@@ -39,20 +30,22 @@ async function reload() {
         <span timeline-title-style>Error</span>
       </template>
       <slot>
-        <form p5 grid gap-y-4 @submit="reload">
-          <div text-lg>
-            Something went wrong
-          </div>
-          <div text-secondary>
+        <div p5 grid gap-y-4>
+          <div text-xl font-bold>
             {{ message }}
           </div>
-          <button flex items-center gap-2 justify-center btn-solid text-center :disabled="state === 'reloading'">
-            <span v-if="state === 'reloading'" block animate-spin preserve-3d>
-              <span block i-ri:loader-2-fill />
-            </span>
-            {{ state === 'reloading' ? 'Reloading' : 'Reload' }}
-          </button>
-        </form>
+          <div text-secondary>
+            {{ subtitle }}
+          </div>
+          <NuxtLink
+            v-if="showBack"
+            :aria-label="$t('nav.back')"
+            class="btn-text inline-flex flex-items-center -ml-5"
+            @click="$router.go(-1)"
+          >
+            <span i-ri:arrow-left-line /> {{ $t('nav.back') }}
+          </NuxtLink>
+        </div>
       </slot>
     </MainContent>
   </NuxtLayout>

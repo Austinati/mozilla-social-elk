@@ -19,22 +19,32 @@ const { busy, oauth, singleInstanceServer } = useSignIn()
     </template>
   </VDropdown>
   <template v-else>
-    <button
+    <div
       v-if="singleInstanceServer"
       flex="~ row"
-      gap-x-1 items-center justify-center btn-solid text-sm px-2 py-1 xl:hidden
-      :disabled="busy"
-      @click="oauth()"
+      gap-x-1 items-center justify-center pl-16px xl:pl-28px sm:pr-2 xl:hidden
     >
-      <span v-if="busy" aria-hidden="true" block animate animate-spin preserve-3d class="rtl-flip">
-        <span block i-ri:loader-2-fill aria-hidden="true" />
-      </span>
-      <span v-else aria-hidden="true" block i-ri:login-circle-line class="rtl-flip" />
-      <i18n-t keypath="action.sign_in_to">
-        <strong>{{ currentServer }}</strong>
-      </i18n-t>
-    </button>
-    <button v-else btn-solid text-sm px-2 py-1 text-center xl:hidden @click="openSigninDialog()">
+      <button
+        flex="~ row"
+        gap-x-1 items-center justify-center text-sm p-x-10px p-y-10px xl:hidden text-center font-600
+        sm:mr-8px sm:btn-solid sm:btn-outline sm:b-rd-8px
+        :disabled="busy"
+        @click="oauth('signup')"
+      >
+        {{ $t('action.create_account') }}
+      </button>
+      <button
+        flex="~ row"
+        mr-8px
+        gap-x-1 items-center justify-center text-sm font-600 p-x-11px p-y-11px xl:hidden
+        sm:border-1 sm:border-primary sm:btn-outline sm:b-rd-8px
+        :disabled="busy"
+        @click="oauth()"
+      >
+        {{ $t('action.sign_in') }}
+      </button>
+    </div>
+    <button v-else btn-solid text-sm font-600 p-x-10px p-y-10px text-center xl:hidden @click="openSigninDialog()">
       {{ $t('action.sign_in') }}
     </button>
   </template>

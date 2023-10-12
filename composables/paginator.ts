@@ -30,6 +30,11 @@ export function usePaginator<T, P, U = T>(
     prevItems.value = []
   }
 
+  function addStatus(status) {
+    const data = items.value as mastodon.v1.Status[]
+    data.splice(0, 0, status)
+  }
+
   watch(stream, (stream) => {
     stream?.then((s) => {
       s.on(eventType, (status) => {
@@ -132,5 +137,6 @@ export function usePaginator<T, P, U = T>(
     state,
     error,
     endAnchor,
+    addStatus,
   }
 }

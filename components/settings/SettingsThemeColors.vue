@@ -21,6 +21,8 @@ function updateTheme(theme: ThemeColors) {
       }"
       :class="currentTheme === key ? 'ring-2' : 'scale-90'"
       :title="key"
+      data-glean="settings.interface.themeColor"
+      :data-glean-value="`${key}`"
       w-8 h-8 rounded-full transition-all
       ring="$local-ring-color offset-3 offset-$c-bg-base"
       @click="updateTheme(theme)"

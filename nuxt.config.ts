@@ -104,7 +104,7 @@ export default defineNuxtConfig({
       // our default translation server #76
       translateApi: '',
       defaultServer: 'mozilla.social',
-      singleInstance: false,
+      singleInstance: true,
     },
     storage: {
       fsBase: 'node_modules/.cache/app',
@@ -208,16 +208,34 @@ export default defineNuxtConfig({
         { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' },
       ],
       meta: [
+        // iOS
+        { name: 'apple-mobile-web-app-capable', content: 'yes' },
+        { name: 'apple-mobile-web-app-title', content: 'Mozilla Social' },
         { name: 'apple-mobile-web-app-status-bar-style', content: 'black-translucent' },
+        // Android
+        { name: 'mobile-web-app-capable', content: 'yes' },
+        { name: 'theme-color', media: '(prefers-color-scheme: light)', content: 'white' },
+        { name: 'theme-color', media: '(prefers-color-scheme: dark)', content: 'black' },
+        // Windows
+        { name: 'msapplication-TileColor', content: '#5F22CB' },
+        { name: 'msapplication-TileImage', content: '/pwa-192x192.png' },
+        // Pinned site
+        { name: 'application-name', content: 'Mozilla Social' },
+        { name: 'msapplication-tooltip', content: 'Mozilla Social' },
+        { name: 'msapplication-starturl', content: '/' },
+        // UC Mobile Browser
+        { name: 'full-screen', content: 'yes' },
         // open graph social image
-        { property: 'og:title', content: 'Elk' },
-        { property: 'og:description', content: 'A nimble Mastodon web client' },
+        { property: 'og:title', content: 'Mozilla Social' },
+        { property: 'og:description', content: 'Decentralized social media powered by Mastodon' },
         { property: 'og:type', content: 'website' },
-        { property: 'og:image', content: 'https://elk.zone/elk-og.png' },
-        { property: 'og:image:width', content: '3800' },
-        { property: 'og:image:height', content: '1900' },
-        { property: 'og:site_name', content: 'Elk' },
-        { property: 'twitter:site', content: '@elk_zone' },
+        // TODO: host this somewhere less dodgy
+        { property: 'og:image', content: 'https://assets.mozilla.social/site_uploads/files/000/000/001/@2x/ef49d116df000b31.png' },
+        { property: 'og:image:width', content: '2400' },
+        { property: 'og:image:height', content: '1260' },
+        { property: 'og:site_name', content: 'Mozilla Social' },
+        // TODO: change this to Twitter handle of Mozilla Social, if we make one
+        { property: 'twitter:site', content: '@mozilla' },
         { property: 'twitter:card', content: 'summary_large_image' },
       ],
     },
@@ -230,14 +248,15 @@ export default defineNuxtConfig({
       contentSecurityPolicy: {
         'default-src': ['\'self\''],
         'base-uri': ['\'self\''],
-        'connect-src': ['\'self\'', 'https:', 'http:', 'wss:', 'ws:'],
+        // Support GA4 per https://developers.google.com/tag-platform/tag-manager/web/csp
+        'connect-src': ['\'self\'', 'https:', 'http:', 'wss:', 'ws:', 'https://*.google-analytics.com', 'https://*.analytics.google.com', 'https://*.googletagmanager.com'],
         'font-src': ['\'self\''],
         'form-action': ['\'none\''],
         'frame-ancestors': ['\'none\''],
-        'img-src': ['\'self\'', 'https:', 'http:', 'data:', 'blob:'],
+        'img-src': ['\'self\'', 'https:', 'http:', 'data:', 'blob:', 'https://*.google-analytics.com', 'https://*.googletagmanager.com'],
         'media-src': ['\'self\'', 'https:', 'http:'],
         'object-src': ['\'none\''],
-        'script-src': ['\'self\'', '\'unsafe-inline\'', '\'wasm-unsafe-eval\''],
+        'script-src': ['\'self\'', '\'unsafe-inline\'', '\'wasm-unsafe-eval\'', 'https://*.googletagmanager.com'],
         'script-src-attr': ['\'none\''],
         'style-src': ['\'self\'', '\'unsafe-inline\''],
         'upgrade-insecure-requests': true,

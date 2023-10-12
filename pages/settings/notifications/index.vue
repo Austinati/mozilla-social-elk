@@ -12,18 +12,13 @@ useHydratedHead({
 </script>
 
 <template>
-  <MainContent back-on-small-screen>
+  <MainContent back-on-small-screen no-beta-label>
     <template #title>
       <div text-lg font-bold flex items-center gap-2 @click="$scrollToTop">
         <span>{{ isHydrated ? $t('settings.notifications.label') : '' }}</span>
       </div>
     </template>
 
-    <SettingsItem
-      command
-      :text="isHydrated ? $t('settings.notifications.notifications.label') : ''"
-      to="/settings/notifications/notifications"
-    />
     <SettingsItem
       command
       :disabled="!pwaEnabled"

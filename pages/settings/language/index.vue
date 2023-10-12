@@ -15,7 +15,7 @@ const status = computed(() => {
 </script>
 
 <template>
-  <MainContent back-on-small-screen>
+  <MainContent back-on-small-screen no-beta-label>
     <template #title>
       <div text-lg font-bold flex items-center gap-2 @click="$scrollToTop">
         <span>{{ $t('settings.language.label') }}</span>
@@ -24,9 +24,6 @@ const status = computed(() => {
     <div p6>
       <label space-y-2>
         <span block font-medium>{{ $t('settings.language.display_language') }}</span>
-        <span block>
-          {{ status }}
-        </span>
         <SettingsLanguage select-settings />
       </label>
       <h2 py4 mt2 font-bold text-xl flex="~ gap-1" items-center>

@@ -3,6 +3,7 @@ import type { mastodon } from 'masto'
 import type { EffectScope, Ref } from 'vue'
 import type { MaybeRefOrGetter, RemovableRef } from '@vueuse/core'
 import type { ElkMasto } from './masto/masto'
+import { mastodonAccountHandle, mastodonAccountId } from '~/telemetry/generated/identifiers'
 import type { UserLogin } from '~/types'
 import type { Overwrite } from '~/types/utils'
 import {
@@ -166,6 +167,8 @@ export async function loginTo(masto: ElkMasto, user: Overwrite<UserLogin, { acco
     })
   }
 
+  mastodonAccountId.set(me.id)
+  mastodonAccountHandle.set(me.acct)
   currentUserHandle.value = me.acct
 }
 
@@ -314,6 +317,13 @@ export async function signOut() {
 
   // Set currentUserId to next user if available
   currentUserHandle.value = users.value[0]?.account?.acct
+
+  // Sign out of Mastodon from Elk
+  const signOutUrl = '/auth/sign_out'
+  const fetchOptions = {
+    method: 'DELETE', // This requires https://github.com/MozillaSocial/mastodon/pull/38 on the Mastodon instance
+  }
+  await fetch(signOutUrl, fetchOptions).then(r => r.json())
 
   if (!currentUserHandle.value)
     await useRouter().push('/')

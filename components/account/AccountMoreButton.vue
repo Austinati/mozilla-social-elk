@@ -14,6 +14,7 @@ const emit = defineEmits<{
 let relationship = $(useRelationship(account))
 
 const isSelf = $(useSelfAccount(() => account))
+const notLocal = $computed(() => getServerName(account) !== currentServer.value)
 
 const { t } = useI18n()
 const { client } = $(useMasto())
@@ -59,7 +60,7 @@ async function removeUserNote() {
     </button>
 
     <template #popper>
-      <NuxtLink :to="account.url" external target="_blank">
+      <NuxtLink v-if="notLocal" :to="account.url" external target="_blank">
         <CommonDropdownItem
           :text="$t('menu.open_in_original_site')"
           icon="i-ri:arrow-right-up-line"

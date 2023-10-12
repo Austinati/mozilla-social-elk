@@ -16,6 +16,7 @@
   --c-bg-dm: #f1e8e6;
 
   --c-text-base: #232323;
+  --c-text-base-light: #f3f3f3;
   --c-text-code: #63470c;
   --c-text-secondary: #686868;
   --c-text-secondary-light: #919191;
@@ -28,13 +29,16 @@
   --c-success: #67C23A;
   --c-warning: #E6A23C;
   --c-error: #F56C6C;
+
+  --c-moz-logo-background: black;
+  --c-moz-logo-text: white;
 }
 
 .dark {
-  --c-primary: var(--c-dark-primary);
-  --c-primary-active: var(--c-dark-primary-active);
-  --c-primary-light: var(--c-dark-primary-light);
-  --c-primary-fade: var(--c-dark-primary-fade);
+  --c-primary: var(--c-dark-primary) !important;
+  --c-primary-active: var(--c-dark-primary-active) !important;
+  --c-primary-light: var(--c-dark-primary-light) !important;
+  --c-primary-fade: var(--c-dark-primary-fade) !important;
   --c-danger: #FF2810;
   --c-danger-active: #E02F00;
 
@@ -50,10 +54,14 @@
   --c-bg-dm: #0a2f35;
 
   --c-text-base: #f3f3f3;
+  --c-text-base-light: #232323;
   --c-text-code: #ecd88e;
   --c-text-secondary: #888;
   --c-text-secondary-light: #686868;
 
   --c-bg-btn-disabled: #2a2a2a;
   --c-text-btn-disabled: #919191;
+
+  --c-moz-logo-background: white;
+  --c-moz-logo-text: black;
 }

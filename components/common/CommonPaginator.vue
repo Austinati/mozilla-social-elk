@@ -46,7 +46,11 @@ defineSlots<{
 const { t } = useI18n()
 const nuxtApp = useNuxtApp()
 
-const { items, prevItems, update, state, endAnchor, error } = usePaginator(paginator, $$(stream), eventType, preprocess)
+const { addStatus, items, prevItems, update, state, endAnchor, error } = usePaginator(paginator, $$(stream), eventType, preprocess)
+
+function percolateStatus(status) {
+  addStatus(status)
+}
 
 nuxtApp.hook('elk-logo:click', () => {
   update()
@@ -68,7 +72,7 @@ function removeEntry(entryId: any) {
   items.value = items.value.filter(i => (i as any)[keyProp] !== entryId)
 }
 
-defineExpose({ createEntry, removeEntry, updateEntry })
+defineExpose({ createEntry, removeEntry, updateEntry, percolateStatus })
 </script>
 
 <template>

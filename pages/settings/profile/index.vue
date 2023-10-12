@@ -11,7 +11,7 @@ useHydratedHead({
 </script>
 
 <template>
-  <MainContent back-on-small-screen>
+  <MainContent back-on-small-screen no-beta-label>
     <template #title>
       <div text-lg font-bold flex items-center gap-2 @click="$scrollToTop">
         <span>{{ isHydrated ? $t('settings.profile.label') : '' }}</span>
@@ -26,19 +26,21 @@ useHydratedHead({
       to="/settings/profile/appearance"
     />
     <SettingsItem
+      v-if="isHydrated && currentUser"
       command large
-      icon="i-ri:hashtag"
-      :text="isHydrated ? $t('settings.profile.featured_tags.label') : ''"
-      :description="isHydrated ? $t('settings.profile.featured_tags.description') : ''"
-      to="/settings/profile/featured-tags"
+      icon="i-ri:settings-3-line"
+      :text="$t('settings.profile.fxa_settings.label')"
+      :description="$t('settings.profile.fxa_settings.description')"
+      to="https://accounts.firefox.com/settings"
+      external target="_blank"
     />
     <SettingsItem
       v-if="isHydrated && currentUser"
       command large
-      icon="i-ri:settings-line"
-      :text="$t('settings.account_settings.label')"
-      :description="$t('settings.account_settings.description')"
-      :to="`https://${currentUser!.server}/auth/edit`"
+      icon="i-ri:settings-3-line"
+      :text="$t('settings.profile.moso_settings.label')"
+      :description="$t('settings.profile.moso_settings.description')"
+      to="https://mozilla.social/auth/edit"
       external target="_blank"
     />
   </MainContent>

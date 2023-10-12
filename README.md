@@ -116,6 +116,7 @@ Clone the repository and run on the root folder:
 
 ```
 pnpm i
+pnpm run build:glean
 pnpm run dev
 ```
 
@@ -125,8 +126,17 @@ We recommend installing [ni](https://github.com/antfu/ni#ni), that will use the 
 
 ```
 ni
+nr build:glean
 nr dev
 ```
+
+### Telemetry
+
+*Note: This section is a work in progress.*
+
+We are using [glean.js](https://github.com/mozilla/glean.js/) for analytics tracking. Build the necessary generated files by running the `build:glean` script before starting your server.
+
+For more details on developing in Glean, see the [Glean Development Guide](./telemetry/README.md) (note it's currently very much a work in progress).
 
 ### Testing
 

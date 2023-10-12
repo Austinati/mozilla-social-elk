@@ -6,6 +6,8 @@ defineProps<{
   back?: boolean
   /** Do not applying overflow hidden to let use floatable components in title */
   noOverflowHidden?: boolean
+  /** Do not show the beta label */
+  noBetaLabel?: boolean
 }>()
 
 const container = ref()
@@ -31,8 +33,8 @@ const containerClass = computed(() => {
       bg="[rgba(var(--rgb-bg-base),0.7)]"
       class="native:lg:w-[calc(100vw-5rem)] native:xl:w-[calc(135%+(100vw-1200px)/2)]"
     >
-      <div flex justify-between px5 py2 :class="{ 'xl:hidden': $route.name !== 'tag' }" class="native:xl:flex" border="b base">
-        <div flex gap-3 items-center :overflow-hidden="!noOverflowHidden ? '' : false" py2 w-full>
+      <div flex="~ wrap " gap-y-8px justify-between px5 py-16px :class="{ 'xl:hidden': $route.name !== 'tag' }" class="native:xl:flex" border="b base">
+        <div flex gap-3 items-center :overflow-hidden="!noOverflowHidden ? '' : false">
           <NuxtLink
             v-if="backOnSmallScreen || back" flex="~ gap1" items-center btn-text p-0 xl:hidden
             :aria-label="$t('nav.back')"
@@ -42,6 +44,9 @@ const containerClass = computed(() => {
           </NuxtLink>
           <div :truncate="!noOverflowHidden ? '' : false" flex w-full data-tauri-drag-region class="native-mac:justify-center native-mac:text-center native-mac:sm:justify-start">
             <slot name="title" />
+            <div v-if="!noBetaLabel" text-primary font-700 p-x-6px p-y-5px ml-12px border-2 border-primary b-rd-8px>
+              Beta
+            </div>
           </div>
           <div sm:hidden h-7 w-1px />
         </div>

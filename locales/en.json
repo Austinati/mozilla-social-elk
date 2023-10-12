@@ -55,6 +55,7 @@
     "close": "Close",
     "compose": "Compose",
     "confirm": "Confirm",
+    "create_account": "Create account",
     "done": "Done",
     "edit": "Edit",
     "enter_app": "Enter App",
@@ -75,9 +76,9 @@
     "switch_account": "Switch account",
     "vote": "Vote"
   },
-  "app_desc_short": "A nimble Mastodon web client",
-  "app_logo": "Elk Logo",
-  "app_name": "Elk",
+  "app_desc_short": "Decentralized social media powered by Mastodon",
+  "app_logo": "Mozilla Logo",
+  "app_name": "Mozilla Social",
   "attachment": {
     "edit_title": "Description",
     "remove_label": "Remove attachment"
@@ -163,9 +164,20 @@
     "account_not_found": "Account {0} not found",
     "explore-list-empty": "Nothing is trending right now. Check back later!",
     "file_size_cannot_exceed_n_mb": "File size cannot exceed {0}MB",
+    "message-404": "Sorry, we can't find that page",
+    "message-500": "Sorry, something went wrong",
+    "message-default": "Something went wrong",
+    "message-subtitle": "We're all about a healthy internet but sometimes broken URLs happen.",
     "sign_in_error": "Cannot connect to the server.",
     "status_not_found": "Post not found",
     "unsupported_file_format": "Unsupported file format"
+  },
+  "footer": {
+    "beta": {
+      "desc_1": "Mozilla Social is an experimental beta product.",
+      "description": "{0} We would love {1}.",
+      "link": "your feedback"
+    }
   },
   "help": {
     "build_preview": {
@@ -272,6 +284,7 @@
     "built_at": "Built {0}",
     "compose": "Compose",
     "conversations": "Conversations",
+    "discover": "Discover",
     "explore": "Explore",
     "favourites": "Favorites",
     "federated": "Federated",
@@ -411,8 +424,8 @@
       "version": "Version"
     },
     "account_settings": {
-      "description": "Edit your account settings in Mastodon UI",
-      "label": "Account settings"
+      "description": "Edit Mastodon preferences",
+      "label": "Advanced settings"
     },
     "interface": {
       "color_mode": "Color Mode",
@@ -450,7 +463,7 @@
           "reblog": "Reblog your post",
           "title": "What notifications to receive?"
         },
-        "description": "Receive notifications even when you are not using Elk.",
+        "description": "Receive notifications even when you are not using Mozilla.social.",
         "instructions": "Don't forget to save your changes using @:settings.notifications.push_notifications.save_settings button!",
         "label": "Push notifications settings",
         "policy": {
@@ -536,7 +549,15 @@
         "description": "People can browse your public posts under these hashtags.",
         "label": "Featured hashtags"
       },
-      "label": "Profile"
+      "fxa_settings": {
+        "description": "Change your password and account preferences",
+        "label": "Account settings"
+      },
+      "label": "Profile",
+      "moso_settings": {
+        "description": "Manage approved apps, move or delete your Mastodon account",
+        "label": "Mozilla Social account settings"
+      }
     },
     "select_a_settings": "Select a setting",
     "users": {
@@ -675,8 +696,8 @@
   "user": {
     "add_existing": "Add an existing account",
     "server_address_label": "Mastodon Server Address",
-    "sign_in_desc": "Sign in to follow profiles or hashtags, favorite, share and reply to posts, or interact from your account on a different server.",
-    "sign_in_notice_title": "Viewing {0} public data",
+    "sign_in_desc": "Sign up to follow profiles and share posts.",
+    "sign_in_notice_title": "New to Mozilla Social?",
     "sign_out_account": "Sign out {0}",
     "single_instance_sign_in_desc": "Sign in to follow profiles or hashtags, favorite, share and reply to posts.",
     "tip_no_account": "If you don't have a Mastodon account yet, {0}.",
