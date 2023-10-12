@@ -20,7 +20,7 @@ const { text, copy, copied } = useClipboard()
           <span>{{ code }}</span>
           <div>
             <button flex justify-between items-center @click="copy(code)">
-              <span v-if="copied && text === code" m-r-2 bg-primary text-base-light p-x-3 b-rd-10>Copied!</span>
+              <span v-if="copied && text === code" m-r-2 bg-primary text-base-light p-x-3 b-rd-10>{{ $t("invites.copied") }}</span>
               <div i-ri:file-copy-line />
             </button>
           </div>

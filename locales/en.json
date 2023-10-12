@@ -197,6 +197,7 @@
     "title": "Elk is in Preview!"
   },
   "invites": {
+    "copied": "Copied",
     "label": "Invite",
     "no_codes": "No invite codes available",
     "subtitle": "Copy a code below and paste into any message to invite a friend. Each code is one-time-use only.",
