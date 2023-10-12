@@ -22,7 +22,7 @@ const useStarFavoriteIcon = usePreferences('useStarFavoriteIcon')
         </div>
       </template>
     </NavSideItem>
-    <NavSideItem :text="$t('nav.invites')" to="/invites" icon="i-ri:at-line" user-only :command="command" />
+    <NavSideItem :text="$t('nav.invites')" to="/invites" icon="i-iconamoon:ticket" user-only :command="command" />
     <NavSideItem :text="$t('nav.conversations')" to="/conversations" icon="i-ri:at-line" user-only :command="command" />
     <NavSideItem :text="$t('nav.favourites')" to="/favourites" :icon="useStarFavoriteIcon ? 'i-ri:star-line' : 'i-ri:heart-3-line'" user-only :command="command" />
     <NavSideItem :text="$t('nav.bookmarks')" to="/bookmarks" icon="i-ri:bookmark-line" user-only :command="command" />
