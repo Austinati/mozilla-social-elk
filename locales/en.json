@@ -196,6 +196,12 @@
     "footer_team": "The Elk Team",
     "title": "Elk is in Preview!"
   },
+  "invites": {
+    "label": "Invite",
+    "no_codes": "No invite codes available",
+    "subtitle": "Copy a code below and paste into any message to invite a friend. Each code is one-time-use only.",
+    "title": "Invite a friend"
+  },
   "language": {
     "search": "Search"
   },
