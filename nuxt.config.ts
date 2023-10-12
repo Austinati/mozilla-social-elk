@@ -114,6 +114,7 @@ export default defineNuxtConfig({
     // Static generation
     '/': { prerender: true },
     '/lists': { prerender: false },
+    '/invites': { prerender: false },
     '/settings/**': { prerender: false },
     // incremental regeneration
     '/api/list-servers': { swr: true },
