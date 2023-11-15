@@ -9,6 +9,10 @@ import StringMetricType from "@mozilla/glean/private/metrics/string";
 /**
  * The user's full account handle, with domain. For example,
  * `account_name@mozilla.social`.
+ * data_taxonomy:
+ *   data_categories: [user.account.username]
+ *   data_uses: [analytics.reporting, personalize.content]
+ *   data_subjects: [customer]
  *
  * Generated from `identifiers.mastodon_account_handle`.
  */
@@ -22,6 +26,11 @@ export const mastodonAccountHandle = new StringMetricType({
 
 /**
  * The user's numeric account ID from Mastodon.
+ * data_taxonomy:
+ *   data_categories: [user.unique_id]
+ *   data_uses: [analytics.reporting, personalize.content]
+ *   data_subjects: [customer]
+ *   data_qualifier: [identified]
  *
  * Generated from `identifiers.mastodon_account_id`.
  */
@@ -35,6 +44,11 @@ export const mastodonAccountId = new StringMetricType({
 
 /**
  * The device user agent string.
+ * data_taxonomy:
+ *   data_categories: [user.device]
+ *   data_uses: [analytics.reporting]
+ *   data_subjects: [customer, visitor]
+ *   data_qualifier: [n/a]
  *
  * Generated from `identifiers.user_agent`.
  */
