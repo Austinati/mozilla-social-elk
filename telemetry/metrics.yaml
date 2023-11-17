@@ -13,7 +13,7 @@ identifiers:
         data_subjects: [customer]
         data_qualifier: [identified]
     bugs:
-      - TBD
+      - https://mozilla-hub.atlassian.net/browse/MSDO-49
     data_reviews:
       - https://docs.google.com/document/d/17vK3r7Sihb_S4-_8oKNoAraWeb_QiomC3UL-2W7PHgY/edit?usp=sharing
     notification_emails:
@@ -36,7 +36,7 @@ identifiers:
         data_uses: [analytics.reporting, personalize.content]
         data_subjects: [customer]
     bugs:
-      - TBD
+      - https://mozilla-hub.atlassian.net/browse/MSDO-49
     data_reviews:
       - https://docs.google.com/document/d/17vK3r7Sihb_S4-_8oKNoAraWeb_QiomC3UL-2W7PHgY/edit?usp=sharing
     notification_emails:
@@ -59,7 +59,7 @@ identifiers:
         data_subjects: [customer, visitor]
         data_qualifier: [n/a]
     bugs:
-      - TBD
+      - https://mozilla-hub.atlassian.net/browse/MSDO-49
     data_reviews:
       - https://docs.google.com/document/d/17vK3r7Sihb_S4-_8oKNoAraWeb_QiomC3UL-2W7PHgY/edit?usp=sharing
     notification_emails:
@@ -85,7 +85,7 @@ ui:
         data_subjects: [customer, visitor]
         data_qualifier: [n/a]
     bugs:
-      - TBD
+      - https://mozilla-hub.atlassian.net/browse/MSDO-49
     data_reviews:
       - https://docs.google.com/document/d/17vK3r7Sihb_S4-_8oKNoAraWeb_QiomC3UL-2W7PHgY/edit?usp=sharing
     notification_emails:
@@ -180,7 +180,7 @@ ui:
         data_subjects: [customer, visitor]
         data_qualifier: [n/a]
     bugs:
-      - TBD
+      - https://mozilla-hub.atlassian.net/browse/MSDO-49
     data_reviews:
       - https://docs.google.com/document/d/17vK3r7Sihb_S4-_8oKNoAraWeb_QiomC3UL-2W7PHgY/edit?usp=sharing
     notification_emails:
@@ -239,7 +239,7 @@ web:
         data_subjects: [customer, visitor]
         data_qualifier: [n/a]
     bugs:
-      - TBD
+      - https://mozilla-hub.atlassian.net/browse/MSDO-49
     data_reviews:
       - https://docs.google.com/document/d/17vK3r7Sihb_S4-_8oKNoAraWeb_QiomC3UL-2W7PHgY/edit?usp=sharing
     notification_emails:
@@ -264,7 +264,7 @@ web:
         data_subjects: [customer, visitor]
         data_qualifier: [n/a]
     bugs:
-      - TBD
+      - https://mozilla-hub.atlassian.net/browse/MSDO-49
     data_reviews:
       - https://docs.google.com/document/d/17vK3r7Sihb_S4-_8oKNoAraWeb_QiomC3UL-2W7PHgY/edit?usp=sharing
     notification_emails:
@@ -284,7 +284,7 @@ web:
         data_subjects: [customer, visitor]
         data_qualifier: [n/a]
     bugs:
-      - TBD
+      - https://mozilla-hub.atlassian.net/browse/MSDO-49
     data_reviews:
       - https://docs.google.com/document/d/17vK3r7Sihb_S4-_8oKNoAraWeb_QiomC3UL-2W7PHgY/edit?usp=sharing
     notification_emails:
@@ -302,7 +302,7 @@ web:
         data_subjects: [customer, visitor]
         data_qualifier: [n/a]
     bugs:
-      - TBD
+      - https://mozilla-hub.atlassian.net/browse/MSDO-49
     data_reviews:
       - https://docs.google.com/document/d/17vK3r7Sihb_S4-_8oKNoAraWeb_QiomC3UL-2W7PHgY/edit?usp=sharing
     notification_emails:
