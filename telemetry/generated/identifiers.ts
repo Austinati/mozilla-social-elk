@@ -7,6 +7,24 @@
 import StringMetricType from "@mozilla/glean/private/metrics/string";
 
 /**
+ * The user's FxA account ID, if available.
+ * data_taxonomy:
+ *   data_categories: [user.unique_id]
+ *   data_uses: [analytics.reporting, personalize.content]
+ *   data_subjects: [customer]
+ *   data_qualifier: [identified]
+ *
+ * Generated from `identifiers.fxa_account_id`.
+ */
+export const fxaAccountId = new StringMetricType({
+    category: "identifiers",
+    name: "fxa_account_id",
+    sendInPings: ["events"],
+    lifetime: "ping",
+    disabled: false,
+});
+
+/**
  * The user's full account handle, with domain. For example,
  * `account_name@mozilla.social`.
  * data_taxonomy:

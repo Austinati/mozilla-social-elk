@@ -1,6 +1,28 @@
 $schema: moz://mozilla.org/schemas/glean/metrics/2-0-0
 
 identifiers:
+  fxa_account_id: # not used by web, but requested by Kirill to keep in here
+    type: string
+    description: >
+      The user's FxA account ID, if available.
+
+      data_taxonomy:
+        data_categories: [user.unique_id]
+        data_uses: [analytics.reporting, personalize.content]
+        data_subjects: [customer]
+        data_qualifier: [identified]
+    bugs:
+      - https://mozilla-hub.atlassian.net/browse/MSDO-49
+    data_reviews:
+      - https://docs.google.com/document/d/17vK3r7Sihb_S4-_8oKNoAraWeb_QiomC3UL-2W7PHgY/edit?usp=sharing
+    notification_emails:
+      - kdemtchouk@mozilla.com
+    expires: never
+    send_in_pings:
+      - events
+    no_lint:
+      - baseline
+
   mastodon_account_id:
     type: string
     lifetime: application
@@ -109,7 +131,7 @@ ui:
         type: string
       ui_additional_detail: &ui_additional_detail
         description: >
-          An optional string to record further informatin about the UI
+          An optional string to record further information about the UI
           element, such as its starting value if it is a toggle or setting.
 
           data_taxonomy:
@@ -254,7 +276,7 @@ web:
     description: >
       The full URL of the previous web page from which a link was followed
       in order to trigger the page view.
-      Comes from the `referer` field of the HTTP header.
+      Comes from the `referrer` field of the HTTP header.
       May not always be available.
       For example, `https://www.google.com`.
 
