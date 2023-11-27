@@ -17,13 +17,13 @@ identifiers:
       - https://docs.google.com/document/d/17vK3r7Sihb_S4-_8oKNoAraWeb_QiomC3UL-2W7PHgY/edit?usp=sharing
     notification_emails:
       - kdemtchouk@mozilla.com
+    lifetime: application
     expires: never
     send_in_pings:
       - events
 
   mastodon_account_id:
     type: string
-    lifetime: application
     description: >
       The user's numeric account ID from Mastodon.
 
@@ -38,13 +38,13 @@ identifiers:
       - https://docs.google.com/document/d/17vK3r7Sihb_S4-_8oKNoAraWeb_QiomC3UL-2W7PHgY/edit?usp=sharing
     notification_emails:
       - kdemtchouk@mozilla.com
+    lifetime: application
     expires: never
     send_in_pings:
       - events
 
   mastodon_account_handle:
     type: string
-    lifetime: application
     description: >
       The user's full account handle, with domain.
       For example, `account_name@mozilla.social`.
@@ -59,13 +59,13 @@ identifiers:
       - https://docs.google.com/document/d/17vK3r7Sihb_S4-_8oKNoAraWeb_QiomC3UL-2W7PHgY/edit?usp=sharing
     notification_emails:
       - kdemtchouk@mozilla.com
+    lifetime: application
     expires: never
     send_in_pings:
       - events
 
   user_agent:
     type: string
-    lifetime: application
     description: >
       The device user agent string.
 
@@ -80,6 +80,7 @@ identifiers:
       - https://docs.google.com/document/d/17vK3r7Sihb_S4-_8oKNoAraWeb_QiomC3UL-2W7PHgY/edit?usp=sharing
     notification_emails:
       - kdemtchouk@mozilla.com
+    lifetime: application
     expires: never
     send_in_pings:
       - events
@@ -241,7 +242,6 @@ ui:
 web:
   page_url:
     type: string
-    lifetime: application
     description: >
       The full URL of the page that was visited,
       along with URL query parameters.
@@ -258,13 +258,13 @@ web:
       - https://docs.google.com/document/d/17vK3r7Sihb_S4-_8oKNoAraWeb_QiomC3UL-2W7PHgY/edit?usp=sharing
     notification_emails:
       - kdemtchouk@mozilla.com
+    lifetime: application
     expires: never
     send_in_pings:
       - events
 
   referrer_url:
     type: string
-    lifetime: application
     description: >
       The full URL of the previous web page from which a link was followed
       in order to trigger the page view.
@@ -283,6 +283,7 @@ web:
       - https://docs.google.com/document/d/17vK3r7Sihb_S4-_8oKNoAraWeb_QiomC3UL-2W7PHgY/edit?usp=sharing
     notification_emails:
       - kdemtchouk@mozilla.com
+    lifetime: application
     expires: never
     send_in_pings:
       - events
