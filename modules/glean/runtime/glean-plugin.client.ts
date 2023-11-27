@@ -10,7 +10,7 @@ export default defineNuxtPlugin((nuxtApp) => {
   nuxtApp.hook('app:mounted', () => {
     log.info('Glean: App mounted, start initing glean')
 
-    const GLEAN_APP_ID = 'mozilla-social-web'
+    const GLEAN_APP_ID = 'moso-mastodon-web'
     const env = useAppConfig().env
     const devMode = env === ('dev' || 'canary' || 'preview')
     const userSettings = useUserSettings()
