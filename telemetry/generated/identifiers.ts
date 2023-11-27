@@ -20,7 +20,7 @@ export const fxaAccountId = new StringMetricType({
     category: "identifiers",
     name: "fxa_account_id",
     sendInPings: ["events"],
-    lifetime: "ping",
+    lifetime: "application",
     disabled: false,
 });
 
