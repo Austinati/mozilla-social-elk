@@ -20,8 +20,6 @@ identifiers:
     expires: never
     send_in_pings:
       - events
-    no_lint:
-      - baseline
 
   mastodon_account_id:
     type: string
@@ -43,8 +41,6 @@ identifiers:
     expires: never
     send_in_pings:
       - events
-    no_lint:
-      - baseline
 
   mastodon_account_handle:
     type: string
@@ -66,8 +62,6 @@ identifiers:
     expires: never
     send_in_pings:
       - events
-    no_lint:
-      - baseline
 
   user_agent:
     type: string
@@ -89,8 +83,6 @@ identifiers:
     expires: never
     send_in_pings:
       - events
-    no_lint:
-      - baseline
 
 ui:
   impression:
