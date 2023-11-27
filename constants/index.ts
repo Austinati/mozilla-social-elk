@@ -1,4 +1,5 @@
-export const APP_NAME = 'Elk'
+export const APP_NAME = 'Mozilla.social'
+export const APP_WEBSITE = 'https://mozilla.social'
 
 export const DEFAULT_POST_CHARS_LIMIT = 500
 export const DEFAULT_FONT_SIZE = '15px'

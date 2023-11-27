@@ -13,7 +13,7 @@ import { env } from '#build-info'
 import { driver } from '#storage-config'
 
 import type { AppInfo } from '~/types'
-import { APP_NAME } from '~/constants'
+import { APP_NAME, APP_WEBSITE } from '~/constants'
 
 import { makeAbsolutePath } from '~/utils/path.ts'
 
@@ -45,7 +45,7 @@ async function fetchAppInfo(origin: string, server: string) {
     method: 'POST',
     body: {
       client_name: APP_NAME + (env !== 'release' ? ` (${env})` : ''),
-      website: 'https://elk.zone',
+      website: APP_WEBSITE,
       redirect_uris: getRedirectURI(origin, server),
       scopes: 'read write follow push',
     },
