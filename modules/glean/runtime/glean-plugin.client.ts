@@ -1,10 +1,10 @@
 import Glean from '@mozilla/glean/web'
 import * as log from 'tauri-plugin-log-api'
 
-import { linkClick, pageUrl, pageView, referrerUrl } from '../../../telemetry/generated/web'
-import { userAgent } from '../../../telemetry/generated/identifiers'
-import { engagement } from '../../../telemetry/generated/ui'
-import { engagementDetails } from '../../../telemetry/engagementDetails'
+import { userAgent } from '~~/telemetry/generated/identifiers'
+import { engagement } from '~~/telemetry/generated/ui'
+import { engagementDetails } from '~~/telemetry/engagementDetails'
+import { linkClick, pageUrl, pageView, referrerUrl } from '~~/telemetry/generated/web'
 
 export default defineNuxtPlugin((nuxtApp) => {
   nuxtApp.hook('app:mounted', () => {
@@ -13,9 +13,11 @@ export default defineNuxtPlugin((nuxtApp) => {
     const GLEAN_APP_ID = 'moso-mastodon-web'
     const env = useAppConfig().env
     const devMode = env === ('dev' || 'canary' || 'preview')
+    const prodMode = env === 'release'
+    const gleanEnabled = (devMode || prodMode)
     const userSettings = useUserSettings()
-    const allowGlean = getPreferences(userSettings.value, 'allowGlean')
-    const uploadEnabled = devMode && allowGlean
+    const userAllowGlean = getPreferences(userSettings.value, 'allowGlean')
+    const uploadEnabled = gleanEnabled && userAllowGlean
 
     Glean.initialize(GLEAN_APP_ID, uploadEnabled, { channel: env })
     userAgent.set(navigator.userAgent)
