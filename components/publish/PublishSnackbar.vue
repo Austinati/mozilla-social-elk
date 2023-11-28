@@ -8,7 +8,7 @@ function show() {
 
   setTimeout(() => {
     hide()
-  }, 10000)
+  }, 5000)
 }
 
 function hide() {
@@ -22,11 +22,11 @@ defineExpose({
 </script>
 
 <template>
-  <div class="snackbar-wrapper">
-    <div
-      :class="{ active: isVisible }"
-      class="snackbar"
-    >
+  <div
+    :class="{ active: isVisible }"
+    class="snackbar-wrapper"
+  >
+    <div class="snackbar">
       Your post was published
     </div>
   </div>
@@ -34,8 +34,16 @@ defineExpose({
 
 <style scoped>
   .snackbar-wrapper {
+    bottom: -100px;
     display: flex;
     justify-content: center;
+    position: sticky;
+    transition: bottom 500ms ease-in-out;
+    width: 100%;
+    z-index: 1000;
+  }
+  .snackbar-wrapper.active {
+    bottom: 50px;
   }
   .snackbar {
     background: var(--c-primary);
@@ -51,7 +59,7 @@ defineExpose({
     text-align: center;
     transition: opacity 800ms ease-in-out;
   }
-  .snackbar.active {
+  .snackbar-wrapper.active .snackbar {
     opacity: 1;
   }
 </style>

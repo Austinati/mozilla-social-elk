@@ -19,6 +19,8 @@ function onPublish() {
 </script>
 
 <template>
-  <PublishWidgetFull @published="onPublish" />
-  <PublishSnackbar ref="publishSnackbar" />
+  <div relative>
+    <PublishWidgetFull @published="onPublish" />
+    <PublishSnackbar ref="publishSnackbar" />
+  </div>
 </template>
