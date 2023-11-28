@@ -3,8 +3,8 @@ import * as log from 'tauri-plugin-log-api'
 
 import { userAgent } from '~~/telemetry/generated/identifiers'
 import { engagement } from '~~/telemetry/generated/ui'
-import { engagementDetails } from '~~/telemetry/engagementDetails'
 import { linkClick, pageUrl, pageView, referrerUrl } from '~~/telemetry/generated/web'
+import { engagementDetails } from '~~/telemetry/engagementDetails'
 
 export default defineNuxtPlugin((nuxtApp) => {
   nuxtApp.hook('app:mounted', () => {
