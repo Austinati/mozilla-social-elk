@@ -12,7 +12,6 @@ useHydratedHead({
 const route = useRoute()
 
 const isRootPath = computedEager(() => route.name === 'settings')
-const devMode = useAppConfig().env === ('dev' || 'canary' || 'preview')
 </script>
 
 <template>
@@ -65,7 +64,6 @@ const devMode = useAppConfig().env === ('dev' || 'canary' || 'preview')
               :match="$route.path.startsWith('/settings/preferences/')"
             />
             <SettingsItem
-              v-if="devMode"
               command
               icon="i-ri-lock-line"
               :text="isHydrated ? $t('settings.privacy.label') : ''"
