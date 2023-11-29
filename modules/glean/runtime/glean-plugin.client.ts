@@ -11,13 +11,11 @@ export default defineNuxtPlugin((nuxtApp) => {
     log.info('Glean: App mounted, start initing glean')
 
     const GLEAN_APP_ID = 'moso-mastodon-web'
-    const env = useAppConfig().env
-    const devMode = env === ('dev' || 'canary' || 'preview')
-    const prodMode = env === 'release'
-    const gleanEnabled = (devMode || prodMode)
+    const env = useBuildInfo().env
+    const devMode = env === 'dev'
     const userSettings = useUserSettings()
     const userAllowGlean = getPreferences(userSettings.value, 'allowGlean')
-    const uploadEnabled = gleanEnabled && userAllowGlean
+    const uploadEnabled = userAllowGlean
 
     Glean.initialize(GLEAN_APP_ID, uploadEnabled, { channel: env })
     userAgent.set(navigator.userAgent)
