@@ -17,7 +17,7 @@ export default defineNuxtPlugin((nuxtApp) => {
     const userAllowGlean = getPreferences(userSettings.value, 'allowGlean')
     const uploadEnabled = userAllowGlean
 
-    Glean.initialize(GLEAN_APP_ID, uploadEnabled, { channel: env })
+    Glean.initialize(GLEAN_APP_ID, uploadEnabled, { channel: `elk-${env}` })
     userAgent.set(navigator.userAgent)
 
     // Debugging
