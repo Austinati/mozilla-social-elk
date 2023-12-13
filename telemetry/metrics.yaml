@@ -241,7 +241,7 @@ ui:
 
 web:
   page_url:
-    type: string
+    type: url
     description: >
       The full URL of the page that was visited,
       along with URL query parameters.
@@ -264,7 +264,7 @@ web:
       - events
 
   referrer_url:
-    type: string
+    type: url
     description: >
       The full URL of the previous web page from which a link was followed
       in order to trigger the page view.
