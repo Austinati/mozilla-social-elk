@@ -6,6 +6,19 @@
     "locale_changing": "Changement de langue, veuillez patienter",
     "route_loaded": "Page {0} chargée"
   },
+  "about": {
+    "administered_by": "Administré par",
+    "contact": "Contact: {0}",
+    "footer_about": "À propos",
+    "footer_content_policy": "Politiques de contenu",
+    "footer_copyright_policies": "Politiques de droits d'auteur",
+    "footer_privacy_notice": "Politique de confidentialité",
+    "footer_profiles_directory": "Répertoire de profils",
+    "footer_terms_of_service": "Conditions d'utilisations",
+    "footer_view_code": "Voir le code source de Mastodon {0}",
+    "server_rules": "Règles du serveur/de la communauté",
+    "subtitle": "Réseau social décentralisé basé sur Mastodon"
+  },
   "account": {
     "avatar_description": "Avatar de {0}",
     "blocked_by": "Ce compte vous a bloqué",
@@ -76,8 +89,8 @@
     "vote": "Voter"
   },
   "app_desc_short": "Un client Mastodon fait avec 🧡",
-  "app_logo": "Logo Elk",
-  "app_name": "Elk",
+  "app_logo": "Mozilla Logo",
+  "app_name": "Mozilla.social",
   "attachment": {
     "edit_title": "Description",
     "remove_label": "Retirer le fichier attaché"
@@ -167,6 +180,13 @@
     "status_not_found": "Message non trouvé",
     "unsupported_file_format": "Format de fichier non supporté"
   },
+  "footer": {
+    "beta": {
+      "desc_1": "Mozilla Social est un produit en bêta expérimentale.",
+      "description": "{0} Nous aimerions {1}.",
+      "link": "vos retours"
+    }
+  },
   "help": {
     "build_preview": {
       "desc1": "Vous consultez actuellement une version d'aperçu d'Elk de la communauté - {0}.",
@@ -183,6 +203,16 @@
     "desc_para6": "et rejoignez l'aventure.",
     "footer_team": "L'équipe Elk",
     "title": "Elk est en mode Aperçu !"
+  },
+  "invites": {
+    "copied": "Copié",
+    "label": "Inviter",
+    "no_codes": {
+      "subtitle": "Nous travaillons actuellement sur vos codes d'invitation. Revenez dans quelques jours et nous aurons des codes prêts à être partagés avec vos ami·es.",
+      "title": "Revenez bientôt"
+    },
+    "subtitle": "Copiez un code ci-dessous and collez-le dans n'importe quel message pour inviter un·e ami·e. Chaque code est à usage unique.",
+    "title": "Inviter un·e ami·e"
   },
   "language": {
     "search": "Recherche"
@@ -274,16 +304,18 @@
     "built_at": "Dernière compilation {0}",
     "compose": "Composer",
     "conversations": "Conversations",
+    "discover": "Découvrir",
     "explore": "Explorer",
     "favourites": "Favoris",
     "federated": "Fédérés",
     "home": "Accueil",
+    "invites": "Invitations",
     "list": "Liste",
     "lists": "Listes",
     "local": "Local",
     "muted_users": "Comptes masqués",
     "notifications": "Notifications",
-    "privacy": "Données privées",
+    "privacy": "Données personnelles",
     "profile": "Profil",
     "search": "Rechercher",
     "select_feature_flags": "Activer/Désactiver Feature Flags",
@@ -451,7 +483,7 @@
           "reblog": "Messages partagés",
           "title": "Quelles notifications recevoir ?"
         },
-        "description": "Recevez des notifications même lorsque vous n'utilisez pas Elk.",
+        "description": "Recevez des notifications même lorsque vous n'utilisez pas Mozilla.social.",
         "instructions": "N'oubliez pas de sauvegarder vos modifications en utilisant le bouton @:settings.notifications.push_notifications.save_settings !",
         "label": "Paramètres des notifications push",
         "policy": {
@@ -479,10 +511,10 @@
         "unsupported": "Votre navigateur ne prend pas en charge les notifications push.",
         "warning": {
           "enable_close": "Fermer",
-          "enable_description": "Pour recevoir des notifications lorsque Elk n'est pas ouvert, activez les notifications push. \nVous pouvez contrôler précisément quels types d'interactions génèrent des notifications push via le bouton \"@:settings.notifications.show_btn{'\"'} ci-dessus une fois activé.",
-          "enable_description_desktop": "Pour recevoir des notifications lorsque Elk n'est pas ouvert, activez les notifications push. \nVous pouvez contrôler précisément quels types d'interactions génèrent des notifications push dans \"Paramètres > Notifications > Paramètres des notifications push\" une fois activé.",
+          "enable_description": "Pour recevoir des notifications lorsque Mozilla.social n'est pas ouvert, activez les notifications push. \nVous pouvez contrôler précisément quels types d'interactions génèrent des notifications push via le bouton \"@:settings.notifications.show_btn{'\"'} ci-dessus une fois activé.",
+          "enable_description_desktop": "Pour recevoir des notifications lorsque Mozilla.social n'est pas ouvert, activez les notifications push. \nVous pouvez contrôler précisément quels types d'interactions génèrent des notifications push dans \"Paramètres > Notifications > Paramètres des notifications push\" une fois activé.",
           "enable_description_mobile": "Vous pouvez également accéder aux paramètres via le menu de navigation \"Paramètres > Notifications > Paramètres des notifications push\".",
-          "enable_description_settings": "Pour recevoir des notifications lorsque Elk n'est pas ouvert, activez les notifications push. Vous pourrez contrôler précisément quels types d'interactions génèrent des notifications push sur ce même écran une fois que vous les aurez activées.",
+          "enable_description_settings": "Pour recevoir des notifications lorsque Mozilla.social n'est pas ouvert, activez les notifications push. Vous pourrez contrôler précisément quels types d'interactions génèrent des notifications push sur ce même écran une fois que vous les aurez activées.",
           "enable_desktop": "Activer les notifications push",
           "enable_title": "Ne manquez jamais rien",
           "re_auth": "Il semble que votre serveur ne supporte pas les notifications push. \nEssayez de vous déconnecter et de vous reconnecter, si ce message persiste, contactez l'administrateur de votre serveur."
@@ -521,6 +553,12 @@
       "zen_mode": "Mode Zen",
       "zen_mode_description": "Masquer les côtés à moins que le curseur de la souris ne les survole. Masquer également certains éléments du fil d'actualité."
     },
+    "privacy": {
+      "data_collection": "Collecte et utilisation des données",
+      "label": "Données personnelles",
+      "opt_out_description": "Autoriser les données techniques, d'interaction, de campagne et de référencement à être envoyées à Mozilla. Avec ces données, vous aurez une expérience personalisée.",
+      "opt_out_title": "Aider à améliorer Mozilla Social"
+    },
     "profile": {
       "appearance": {
         "bio": "Bio",
@@ -537,7 +575,15 @@
         "description": "Les gens peuvent parcourir vos messages publics sous ces hashtags.",
         "label": "Hashtags en vedette"
       },
-      "label": "Profil"
+      "fxa_settings": {
+        "description": "Changer votre mot de passe et vos préférences",
+        "label": "Paramètres du compte"
+      },
+      "label": "Profil",
+      "moso_settings": {
+        "description": "Gérer les applications autorisées, transférer ou supprimer votre compte Mastodon",
+        "label": "Paramètres du compte Mozilla Social"
+      }
     },
     "select_a_settings": "Sélectionner un paramètre",
     "users": {
@@ -678,7 +724,7 @@
     "add_existing": "Ajouter un compte existant",
     "server_address_label": "Adresse du serveur mastodon",
     "sign_in_desc": "Connectez-vous pour suivre des profils ou des hashtags, aimer, partagez et répondre à des messages, ou interagir à partir de votre compte d'autre serveur.",
-    "sign_in_notice_title": "Affichage de {0} données publiques",
+    "sign_in_notice_title": "Vous découvrez Mozilla.social ?",
     "sign_out_account": "Se déconnecter de {0}",
     "single_instance_sign_in_desc": "Connectez-vous pour suivre des profils ou des hashtags, aimer, partager et répondre aux messages.",
     "tip_no_account": "Si vous n'avez pas encore de compte Mastodon, {0}.",
