@@ -57,6 +57,7 @@ const hideAllMedia = computed(
       />
       <StatusPreviewCard
         v-if="status.card"
+        :sensitive="status.sensitive"
         :card="status.card"
         :small-picture-only="status.mediaAttachments?.length > 0"
       />
