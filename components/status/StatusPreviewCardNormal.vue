@@ -5,6 +5,8 @@ const props = defineProps<{
   card: mastodon.v1.PreviewCard
   /** For the preview image, only the small image mode is displayed */
   smallPictureOnly?: boolean
+  /** To use blurhash on preview cards containing sensitive content */
+  sensitive?: boolean
   /** When it is root card in the list, not appear as a child card */
   root?: boolean
 }>()
@@ -30,7 +32,8 @@ const cardTypeIconMap: Record<mastodon.v1.PreviewCardType, string> = {
 }
 
 const userSettings = useUserSettings()
-const shouldLoadAttachment = ref(!getPreferences(userSettings.value, 'enableDataSaving'))
+const noDataSaving = !getPreferences(userSettings.value, 'enableDataSaving')
+const shouldLoadAttachment = ref(noDataSaving && !props.sensitive)
 
 function loadAttachment() {
   shouldLoadAttachment.value = true
