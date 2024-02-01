@@ -415,6 +415,7 @@
     "further_actions": {
       "limit": {
         "description": "Here are your options for controlling what you see:",
+        "signup": "You will need to create an account in order to block or mute users.",
         "title": "Don't want to see this?"
       },
       "report": {
