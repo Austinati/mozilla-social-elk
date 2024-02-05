@@ -21,13 +21,30 @@ const availableStatuses = ref(status ? [status] : [])
 const selectedStatusIds = ref(status ? [status.id] : [])
 const additionalComments = ref('')
 const forwardReport = ref(false)
+const isAuthorized = ref(await checkAuthorization())
+
+const server = useRuntimeConfig().public.defaultServer
+const anonymousReportUrl = `https://${server}/api/v1/anonymous-reports`
 
 const dismissButton = ref<HTMLDivElement>()
 
 loadStatuses() // Load statuses asynchronously ahead of time
 
+// We need to know if the user is authorized so we can route the report correctly
+// NOTE: If there is a better way to grab an `isAuth'd` value, let me know
+async function checkAuthorization() {
+  try {
+    await client.value.v1.accounts.verifyCredentials()
+    return true
+  }
+  catch {
+    return false
+  }
+}
+
 function categoryChosen() {
-  step.value = reportReason.value === 'dontlike' ? 'furtherActions' : 'selectStatuses'
+  const dontLikeAction = isAuthorized.value ? 'furtherActions' : 'finalAnonymous'
+  step.value = reportReason.value === 'dontlike' ? dontLikeAction : 'selectStatuses'
   resetModal()
 }
 
@@ -66,6 +83,29 @@ async function submitReport() {
     ruleIds: reportReason.value === 'violation' ? selectedRuleIds.value : null,
   })
   step.value = 'furtherActions'
+  resetModal()
+}
+
+async function submitAnonymousReport() {
+  const body = JSON.stringify({
+    account_id: account.id,
+    status_ids: selectedStatusIds.value,
+    comment: additionalComments.value,
+    forward: forwardReport.value,
+    category: reportReason.value === 'spam' ? 'spam' : reportReason.value === 'violation' ? 'violation' : 'other',
+    rule_ids: reportReason.value === 'violation' ? selectedRuleIds.value : null,
+  })
+
+  await fetch(anonymousReportUrl, {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body,
+  })
+
+  step.value = 'finalAnonymous'
   resetModal()
 }
 
@@ -205,7 +245,7 @@ function resetModal() {
       </table>
       <button
         btn-solid mxa mt-5
-        @click="submitReport()"
+        @click="isAuthorized ? submitReport() : submitAnonymousReport()"
       >
         {{ $t('report.submit') }}
       </button>
@@ -243,6 +283,19 @@ function resetModal() {
         </button><br>
         {{ $t('report.block_desc') }}
       </div>
+      <button btn-solid mxa mt-10 @click="emit('close')">
+        {{ $t('action.done') }}
+      </button>
+    </template>
+
+    <template v-else-if="step === 'finalAnonymous'">
+      <h1 mxa text-4xl mb4>
+        {{ reportReason === 'dontlike' ? $t('report.further_actions.limit.title') : $t('report.further_actions.report.title') }}
+      </h1>
+      <p text-xl>
+        {{ reportReason === 'dontlike' ? $t('report.further_actions.limit.signup') : '' }}
+      </p>
+
       <button btn-solid mxa mt-10 @click="emit('close')">
         {{ $t('action.done') }}
       </button>
