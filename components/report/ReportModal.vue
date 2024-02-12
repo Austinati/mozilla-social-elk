@@ -210,7 +210,7 @@ function resetModal() {
       </div>
 
       <div v-if="considersIllegal">
-        <label pl-2 for="considers_illegal_country" font-bold>{{ $t('report.considers_illegal_country') }}</label>
+        <label pl-2 for="considers_illegal_country" font-bold pr-2>{{ $t('report.considers_illegal_country') }}</label>
         <input id="considers_illegal_country" v-model="considersIllegalCountry" type="text">
       </div>
 
