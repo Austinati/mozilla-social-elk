@@ -16,6 +16,9 @@ const { client } = useMasto()
 const step = ref('selectCategory')
 const serverRules = ref((await client.value.v2.instance.fetch()).rules || [])
 const reportReason = ref('')
+const considersIllegal = ref(false)
+const considersIllegalCountry = ref('')
+const considersIllegalSignature = ref(false)
 const selectedRuleIds = ref([])
 const availableStatuses = ref(status ? [status] : [])
 const selectedStatusIds = ref(status ? [status.id] : [])
@@ -24,7 +27,7 @@ const forwardReport = ref(false)
 const isAuthorized = ref(await checkAuthorization())
 
 const server = useRuntimeConfig().public.defaultServer
-const anonymousReportUrl = `https://${server}/api/v1/anonymous-reports`
+const reportUrl = `https://${server}/api/v1/reports`
 
 const dismissButton = ref<HTMLDivElement>()
 
@@ -74,19 +77,6 @@ async function loadStatuses() {
 }
 
 async function submitReport() {
-  await client.value.v1.reports.create({
-    accountId: account.id,
-    statusIds: selectedStatusIds.value,
-    comment: additionalComments.value,
-    forward: forwardReport.value,
-    category: reportReason.value === 'spam' ? 'spam' : reportReason.value === 'violation' ? 'violation' : 'other',
-    ruleIds: reportReason.value === 'violation' ? selectedRuleIds.value : null,
-  })
-  step.value = 'furtherActions'
-  resetModal()
-}
-
-async function submitAnonymousReport() {
   const body = JSON.stringify({
     account_id: account.id,
     status_ids: selectedStatusIds.value,
@@ -94,18 +84,26 @@ async function submitAnonymousReport() {
     forward: forwardReport.value,
     category: reportReason.value === 'spam' ? 'spam' : reportReason.value === 'violation' ? 'violation' : 'other',
     rule_ids: reportReason.value === 'violation' ? selectedRuleIds.value : null,
+    considers_illegal: considersIllegal.value,
+    considers_illegal_country: considersIllegalCountry.value,
   })
 
-  await fetch(anonymousReportUrl, {
+  const headers = {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json',
+  }
+
+  const accessToken = client?.value?.config?.props?.accessToken
+  if (accessToken)
+    headers.Authorization = accessToken
+
+  await fetch(reportUrl, {
     method: 'POST',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
-    },
+    headers,
     body,
   })
 
-  step.value = 'finalAnonymous'
+  step.value = isAuthorized.value ? 'furtherActions' : 'finalAnonymous'
   resetModal()
 }
 
@@ -193,11 +191,30 @@ function resetModal() {
         </p>
       </div>
 
-      <div v-if="reportReason && reportReason !== 'dontlike'">
-        <h3 mt-8 mb-4 font-bold>
+      <div>
+        <input id="considers_illegal" v-model="considersIllegal" type="checkbox" value="considers_illegal">
+        <label pl-2 for="considers_illegal" font-bold>{{ $t('report.considers_illegal') }}</label>
+      </div>
+
+      <div v-if="(reportReason && reportReason !== 'dontlike') || considersIllegal">
+        <h3 mt-8 mb-4 font-bold :hidden="considersIllegal">
           {{ $t('report.anything_else') }}
         </h3>
+        <h3 mt-8 mb-4 font-bold :hidden="!considersIllegal">
+          {{ $t('report.anything_else_considers_illegal') }}
+        </h3>
         <textarea v-model="additionalComments" w-full h-20 p-3 border :placeholder="$t('report.additional_comments')" />
+        <p :hidden="!considersIllegal">
+          {{ $t('report.considers_illegal_footer') }}
+        </p>
+      </div>
+
+      <div v-if="considersIllegal">
+        <label pl-2 for="considers_illegal_country" font-bold>{{ $t('report.considers_illegal_country') }}</label>
+        <input id="considers_illegal_country" v-model="considersIllegalCountry" type="text">
+      </div>
+
+      <div v-if="(reportReason && reportReason !== 'dontlike') || considersIllegal">
         <div v-if="getServerName(account) && getServerName(account) !== currentServer">
           <h3 mt-8 mb-2 font-bold>
             {{ $t('report.another_server') }}
@@ -210,9 +227,14 @@ function resetModal() {
         </div>
       </div>
 
+      <div v-if="considersIllegal">
+        <input id="considers_illegal_signature" v-model="considersIllegalSignature" type="checkbox" value="considers_illegal_signature">
+        <label pl-2 for="considers_illegal_signature" font-bold>{{ $t('report.considers_illegal_signature') }}</label>
+      </div>
+
       <button
         btn-solid mxa mt-10
-        :disabled="!reportReason || (reportReason === 'violation' && selectedRuleIds.length < 1)"
+        :disabled="!reportReason || (reportReason === 'violation' && selectedRuleIds.length < 1) || (considersIllegal && !additionalComments) || (considersIllegal && !considersIllegalSignature)"
         @click="categoryChosen()"
       >
         {{ $t('action.next') }}
@@ -245,7 +267,7 @@ function resetModal() {
       </table>
       <button
         btn-solid mxa mt-5
-        @click="isAuthorized ? submitReport() : submitAnonymousReport()"
+        @click="submitReport()"
       >
         {{ $t('report.submit') }}
       </button>
