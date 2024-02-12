@@ -16,9 +16,9 @@ const { client } = useMasto()
 const step = ref('selectCategory')
 const serverRules = ref((await client.value.v2.instance.fetch()).rules || [])
 const reportReason = ref('')
-const illegalContent = ref(false)
-const illegalContentCountry = ref('')
-const illegalContentSignature = ref(false)
+const considersIllegal = ref(false)
+const considersIllegalCountry = ref('')
+const considersIllegalSignature = ref(false)
 const selectedRuleIds = ref([])
 const availableStatuses = ref(status ? [status] : [])
 const selectedStatusIds = ref(status ? [status.id] : [])
@@ -84,8 +84,8 @@ async function submitReport() {
     forward: forwardReport.value,
     category: reportReason.value === 'spam' ? 'spam' : reportReason.value === 'violation' ? 'violation' : 'other',
     rule_ids: reportReason.value === 'violation' ? selectedRuleIds.value : null,
-    illegal_content: illegalContent.value,
-    illegal_content_country: illegalContentCountry.value,
+    considers_illegal: considersIllegal.value,
+    considers_illegal_country: considersIllegalCountry.value,
   })
 
   const headers = {
@@ -192,29 +192,29 @@ function resetModal() {
       </div>
 
       <div>
-        <input id="illegal_content" v-model="illegalContent" type="checkbox" value="illegal_content">
-        <label pl-2 for="illegal_content" font-bold>{{ $t('report.illegal_content') }}</label>
+        <input id="considers_illegal" v-model="considersIllegal" type="checkbox" value="considers_illegal">
+        <label pl-2 for="considers_illegal" font-bold>{{ $t('report.considers_illegal') }}</label>
       </div>
 
-      <div v-if="(reportReason && reportReason !== 'dontlike') || illegalContent">
-        <h3 mt-8 mb-4 font-bold :hidden="illegalContent">
+      <div v-if="(reportReason && reportReason !== 'dontlike') || considersIllegal">
+        <h3 mt-8 mb-4 font-bold :hidden="considersIllegal">
           {{ $t('report.anything_else') }}
         </h3>
-        <h3 mt-8 mb-4 font-bold :hidden="!illegalContent">
-          {{ $t('report.anything_else_illegal_content') }}
+        <h3 mt-8 mb-4 font-bold :hidden="!considersIllegal">
+          {{ $t('report.anything_else_considers_illegal') }}
         </h3>
         <textarea v-model="additionalComments" w-full h-20 p-3 border :placeholder="$t('report.additional_comments')" />
-        <p :hidden="!illegalContent">
-          {{ $t('report.illegal_content_footer') }}
+        <p :hidden="!considersIllegal">
+          {{ $t('report.considers_illegal_footer') }}
         </p>
       </div>
 
-      <div v-if="illegalContent">
-        <label pl-2 for="illegal_content_country" font-bold>{{ $t('report.illegal_content_country') }}</label>
-        <input id="illegal_content_country" v-model="illegalContentCountry" type="text">
+      <div v-if="considersIllegal">
+        <label pl-2 for="considers_illegal_country" font-bold>{{ $t('report.considers_illegal_country') }}</label>
+        <input id="considers_illegal_country" v-model="considersIllegalCountry" type="text">
       </div>
 
-      <div v-if="(reportReason && reportReason !== 'dontlike') || illegalContent">
+      <div v-if="(reportReason && reportReason !== 'dontlike') || considersIllegal">
         <div v-if="getServerName(account) && getServerName(account) !== currentServer">
           <h3 mt-8 mb-2 font-bold>
             {{ $t('report.another_server') }}
@@ -227,14 +227,14 @@ function resetModal() {
         </div>
       </div>
 
-      <div v-if="illegalContent">
-        <input id="illegal_content_signature" v-model="illegalContentSignature" type="checkbox" value="illegal_content_signature">
-        <label pl-2 for="illegal_content_signature" font-bold>{{ $t('report.illegal_content_signature') }}</label>
+      <div v-if="considersIllegal">
+        <input id="considers_illegal_signature" v-model="considersIllegalSignature" type="checkbox" value="considers_illegal_signature">
+        <label pl-2 for="considers_illegal_signature" font-bold>{{ $t('report.considers_illegal_signature') }}</label>
       </div>
 
       <button
         btn-solid mxa mt-10
-        :disabled="!reportReason || (reportReason === 'violation' && selectedRuleIds.length < 1) || (illegalContent && !additionalComments) || (illegalContent && !illegalContentSignature)"
+        :disabled="!reportReason || (reportReason === 'violation' && selectedRuleIds.length < 1) || (considersIllegal && !additionalComments) || (considersIllegal && !considersIllegalSignature)"
         @click="categoryChosen()"
       >
         {{ $t('action.next') }}
