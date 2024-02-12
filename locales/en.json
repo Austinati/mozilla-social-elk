@@ -407,6 +407,7 @@
     "additional_comments": "Additional comments",
     "another_server": "The user you're reporting is from another server",
     "anything_else": "Is there anything else you think we should know?",
+    "anything_else_illegal_content": "Please provide additional details, including sufficient information for Mozilla to understand the specific law(s) or requirement(s) you believe has been broken.",
     "block_desc": "You will no longer see any posts from this user. They will not be able to see your posts or follow you. They will be able to tell that they are blocked.",
     "dontlike": "I don't like it",
     "dontlike_desc": "It is not something you want to see",
@@ -423,6 +424,10 @@
         "title": "Thanks for reporting, we'll look into this."
       }
     },
+    "illegal_content": "I think this content is illegal in my jurisdiction",
+    "illegal_content_country": "Country in which you believe the content is illegal.",
+    "illegal_content_footer": "Please note that we will not be able to conduct a legal review if you don’t precisely specify what you allege to be illegal about the content. We may, however, still review under our content policies.",
+    "illegal_content_signature": "By submitting this report I certify, under penalty of perjury, that the allegations it contains are complete and accurate, to the best of my knowledge.",
     "limiting": "Limiting {0}",
     "mute_desc": "You will no longer see any posts from this user. They can still follow you and see your posts. They will not know that they are muted.",
     "other": "It's something else",
