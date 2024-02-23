@@ -95,7 +95,7 @@ async function submitReport() {
 
   const accessToken = client?.value?.config?.props?.accessToken
   if (accessToken)
-    headers.Authorization = accessToken
+    headers.Authorization = `Bearer ${accessToken}`
 
   await fetch(reportUrl, {
     method: 'POST',
